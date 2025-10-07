@@ -40,17 +40,6 @@
 
                 <!-- Currency Selection -->
                 <div class="flex items-center justify-center space-x-2">
-                    {{-- @foreach (['usd', 'khr'] as $option)
-                        <label @click="currency='{{ $option }}'"
-                            class="w-full p-2 md:p-3 rounded-full cursor-pointer transition-all"
-                            :class="currency === '{{ $option }}' ? 'bg-[#4FC9EE] text-white' : 'bg-white text-[#4FC9EE]'">
-                            <h1 class="text-[15px] xl:text-[24px] font-[600] text-center">
-                                {{ __('messages.' . $option) }}
-                            </h1>
-                            <input type="radio" name="currency" value="{{ $option }}" class="hidden"
-                                :checked="currency === '{{ $option }}'">
-                        </label>
-                    @endforeach --}}
                     <label @click="currency='usd'"
                         class="w-full p-2 md:p-3 rounded-full cursor-pointer transition-all"
                         :class="currency === 'usd' ? 'bg-[#4FC9EE] text-white' : 'bg-white text-[#4FC9EE]'">
