@@ -19,11 +19,12 @@ class TelegramController extends Controller
         $botToken = env('TELEGRAM_BOT_TOKEN'); // Your bot token
         $chatId = env('TELEGRAM_CHAT_ID'); // Your chat ID
 
-        $message = "New Book Order:\n";
-        $message .= "Book: {$request->book}\n";
-        $message .= "Type: {$request->type}\n";
-        $message .= "Name: {$request->name}\n";
-        $message .= "Location: {$request->location}";
+        $message = "📦 *New Book Order*\n\n";
+        $message .= "👤 Name: {$request->name}\n";
+        $message .= "📞 Phone: {$request->phone}\n";
+        $message .= "📍 Location: {$request->location}\n";
+        $message .= "📚 Book: {$request->book}\n";
+        $message .= "🗂 Type: {$request->type}";
 
         $response = Http::get("https://api.telegram.org/bot{$botToken}/sendMessage", [
             'chat_id' => $chatId,

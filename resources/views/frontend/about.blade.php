@@ -16,31 +16,21 @@
             ['id' => 9, 'year' => 'messages.1975_1992', 'content' => 'messages.1975_1992_content'],
         ];
     @endphp
-    <div class="w-full h-[60vh] md:h-screen bg-gray-100 flex items-center justify-center "
+    <section class="w-full h-[60vh] md:h-screen flex items-center justify-center overflow-hidden"
         style="background-image: url('{{ asset('assets/images/Banners/aboutus.png') }}'); background-size: cover; background-position: center;">
-
-        <div class="relative flex justify-between items-center max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] md:space-x-[8rem] xl:space-x-[14rem] overflow-hidden">
-            <div class="w-full">
-                <p data-aos="fade-right" data-aos-duration="400"
-                    class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">
-                    សមាគមព្រះគម្ពីរនៅកម្ពុជា
-                </p>
-
-                <h1 data-aos="fade-right" data-aos-duration="500"
-                    class="font-bold text-wrap text-[#ffffff]
-                    {{ $locale === 'km'
-                        ? 'text-[20px] md:text-[50px] xl:text-[5rem]'
-                        : 'text-[20px] leading-[20px] md:text-[50px] md:leading-[50px] xl:text-[5rem] xl:leading-[5rem]' }}">
-                    {{ __('messages.welcome') }}
+        <div class="flex items-center justify-between gap-2 w-full max-w-7xl mx-auto px-4 md:px-20 ">
+            <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
+                <p class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.title-1') }}</p>
+                <h1 class="text-[20px] md:text-[50px] xl:text-[5rem] font-[600] leading-none">
+                    {!! nl2br(__('messages.welcome')) !!}
                 </h1>
             </div>
 
-            <p data-aos="fade-left" data-aos-duration="600"
-                class="w-full text-[14px] xl:text-[24px] text-[#ffffff] font-[400]">
-                {{ __('messages.quote') }}
-            </p>
+            <p data-aos="fade-left" data-aos-duration="1000"
+                class="w-full text-[14px] xl:text-[24px] text-[#ffffff] font-[400] flex justify-end">
+                {{ __('messages.quote') }}</p>
         </div>
-    </div>
+    </section>
 
     <div
         class="w-full max-w-[420px] md:max-w-[720px] xl:max-w-[1200px] mx-auto h-full translate-y-[-15%] xl:translate-y-[-30%] shadow-sm drop-shadow-md">

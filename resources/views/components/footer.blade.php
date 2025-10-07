@@ -13,7 +13,7 @@
                     class="flex space-x-[3rem] w-[50%] md:w-fit mx-auto bg-[#ffffff] rounded-full justify-between items-center ps-3 pe-2 py-1">
                     <span
                         class="w-fit text-[16px] text-[#4FC9EE] text-center font-bold ms-1 {{ app()->getLocale() === 'km' ? 'font-krasar' : 'font-gotham' }}">
-                        {{ app()->getLocale() === 'km' ? 'បរិច្ចាក' : 'Donate' }}
+                        {{ app()->getLocale() === 'km' ? 'បរិច្ចាគ' : 'Donate' }}
                     </span>
                     <span class="w-[40px] h-[40px] md:w-full md:h-full bg-[#4FC9EE] rounded-full p-2">
                         <svg width="24" height="24" viewBox="0 0 13 13" fill="none"

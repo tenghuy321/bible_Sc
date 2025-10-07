@@ -113,7 +113,7 @@
             <img src="{{ asset('assets/images/logo.svg') }}" alt="">
             <a href="{{ url('/#home') }}" class="flex items-center gap-6 bg-[#50bbed] ps-6 pe-2 py-1 rounded-full">
                 <span class="text-[16px] text-white font-bold">
-                    {{ app()->getLocale() === 'km' ? 'បរិច្ចាក' : 'Donate' }}
+                    {{ app()->getLocale() === 'km' ? 'បរិច្ចាគ' : 'Donate' }}
                 </span>
 
                 <span class="flex items-center justify-center w-10 h-10 bg-[#4FC9EE] rounded-full">

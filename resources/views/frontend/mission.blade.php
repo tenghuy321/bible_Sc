@@ -9,12 +9,9 @@
         <div
             class="relative flex justify-between items-center max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] md:space-x-[8rem] xl:space-x-[14rem]">
             <div class="w-full">
-                <p data-aos="fade-right" data-aos-duration="400"
-                    class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-krasar">
-                    សមាគមព្រះគម្ពីរនៅកម្ពុជា
-                </p>
+                <p class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.title-1') }}</p>
                 <h1 data-aos="fade-right" data-aos-duration="500"
-                    class="font-bold text-wrap text-[#ffffff] text-[20px] md:text-[50px] xl:text-[5rem]">
+                    class="font-bold text-wrap text-[#ffffff] text-[20px] md:text-[50px] xl:text-[5rem] leading-none">
                     {{ __('messages.welcome') }}
                 </h1>
             </div>

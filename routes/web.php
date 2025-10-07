@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\CataloguesBackendController;
 
 Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('lang.switch');
 Route::get('/cata', [CataloguesController::class, 'index'])->name('cata');
-Route::get('/cata/{cataslug}', [CataloguesController::class, 'show'])->name('catalogue.show');
+// Route::get('/cata/{cataslug}', [CataloguesController::class, 'show'])->name('catalogue.show');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/mission', [MissionController::class, 'index'])->name('mission');

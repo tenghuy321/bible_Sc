@@ -34,10 +34,10 @@ class DonationController extends Controller
             ? number_format((float) $validated['amount'], 2, '.', '')
             : number_format((int) $validated['amount'], 0, '', '');
 
-        $tranId  = date('YmdHis');
-        $reqTime = date('YmdHis');
-        // $tranId = time();
-        // $reqTime = time();
+        // $tranId  = date('YmdHis');
+        // $reqTime = date('YmdHis');
+        $tranId = time();
+        $reqTime = time();
 
 
         $fields = [

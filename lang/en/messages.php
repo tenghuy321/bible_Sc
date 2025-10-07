@@ -9,6 +9,7 @@ return [
     "vlogs" => "Vlogs",
 
     "welcome" => "The Bible\nSociety\nin Cambodia.",
+    "title-1" => "Welcome to",
 
     "quote" => "GOD’S WORD Living Hope for All.",
 
@@ -26,7 +27,7 @@ return [
     "sop_content" => "The Bible Society in Cambodia is an affiliated member of the United Bible Societies, registered in Cambodia with the Ministry of Cults and Religions as a religious organization. Bible Society began its ministry in Cambodia in 1892, with the purpose of making God’s Word available to people in Cambodia, in a language they can understand, and in media that meet people’s needs. The ministry of Bible Society focuses primarily on Bible translation, publishing and distribution, and also on Scripture engagement, advocacy and literacy.",
     "dsr" => "Daily Scripture Reading",
     "rkbo" => "Read Khmer Bible Online",
-    "rkbo_content" => "You can access the two Khmer Bible texts on Bible Society on Cambodia website: Khmer Standard Version (KHSV) & Khmer Old Version (KHOV). or YouVersion app.",
+    "rkbo_content" => "You can access the two Khmer Bible texts on Bible Society on Cambodia website: Khmer Standard Version (KHSV) & Khmer Old Version (KHOV). or Our app.",
     "read" => "Read",
     "ofb" => "Our Foundational Beliefs",
     "ofb_content_1" => "The Bible Society movement has as its motivation the fulfilment of the Great Commission (Matthew 28:18-20)",

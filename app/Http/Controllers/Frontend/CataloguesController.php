@@ -11,20 +11,21 @@ class CataloguesController extends Controller
 {
     public function index()
     {
-        $data['catalogue'] = Catalogues::get();
+        $catalogues = Catalogues::with('catabooks')->get();
 
-        return view('frontend.catalogues', $data);
+        return view('frontend.catalogues', compact('catalogues'));
     }
 
-    public function show($cataslug)
-    {
-        $catalogue = Catalogues::where('slug', $cataslug)
-            ->with('catabooks')
-            ->firstOrFail();
 
-        return view('frontend.catalogueShow', [
-            'catalogue' => $catalogue,
-            'catabooks' => $catalogue->catabooks,
-        ]);
-    }
+    // public function show($cataslug)
+    // {
+    //     $catalogue = Catalogues::where('slug', $cataslug)
+    //         ->with('catabooks')
+    //         ->firstOrFail();
+
+    //     return view('frontend.catalogueShow', [
+    //         'catalogue' => $catalogue,
+    //         'catabooks' => $catalogue->catabooks,
+    //     ]);
+    // }
 }
