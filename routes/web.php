@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/donations/create-payment', [DonationController::class, 'createPayment'])->name('donations.create-payment');
+Route::get('/payment/success', [DonationController::class, 'paymentSuccess'])->name('payment.success');
 
 Route::get('/{locale}/{versionSlug}', [HomeController::class, 'show'])->name('version.show');
 

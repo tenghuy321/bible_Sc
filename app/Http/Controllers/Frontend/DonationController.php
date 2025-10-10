@@ -120,8 +120,9 @@ class DonationController extends Controller
         $currency = 'USD';
         $amount = number_format((float)$validated['amount'], 2, '.', '');
         
-        $requestTime = date('YmdHis'); 
-        $merchantRefNo = 'rff' . $requestTime;
+        $expiredDate = time() + 3600; // 1 hour validity
+        $requestTime = date('YmdHis');
+        $merchantRefNo = 'REF' . $requestTime;
 
         $payload = [
             'mc_id'           => $merchantId,
@@ -130,9 +131,10 @@ class DonationController extends Controller
             'currency'        => $currency,
             'description'     => 'Donation payment link',
             'payment_limit'   => 1,
-            'expired_date'    => $requestTime, 
+            'expired_date'    => $expiredDate, 
             // 'expired_date'    => date('YmdHis', strtotime('+1 hour')),
-            'return_url'      => base64_encode("https://olive-tiger-871329.hostingersite.com/"),
+            // 'return_url' => base64_encode("http://localhost:8000/"),
+            'return_url' => base64_encode("https://olive-tiger-871329.hostingersite.com/"),
             'merchant_ref_no' => $merchantRefNo,
             // Optional payout field if needed:
             // 'payout' => '[{"acc":"122092016015926","amt":0.01},{"acc":"122091511120425","amt":0.02}]',
@@ -157,20 +159,31 @@ class DonationController extends Controller
 
         $response = Http::asForm()->post($paymentUrl, $postData);
 
-        dd($response->json());
+        // dd($response->json());
 
         Log::info('ABA request', ['payload' => $payload, 'postData' => $postData]);
         Log::info('ABA response', ['response' => $response->json()]);
        
         if ($response->successful()) {
-            $resData = $response->json();
+    $resData = $response->json();
 
-            if (isset($resData['payment_url'])) {
-                return redirect($resData['payment_url']);
-            }
+    // Some ABA responses wrap everything inside "data"
+    if (isset($resData['data']['payment_link'])) {
+        $paymentLink = $resData['data']['payment_link'];
 
-            return back()->withErrors(['msg' => 'Unable to generate payment link: ' . json_encode($resData)]);
+        // Add https:// if missing
+        if (!str_starts_with($paymentLink, 'http')) {
+            $paymentLink = 'https://' . $paymentLink;
         }
+
+        return redirect()->away($paymentLink);
+    }
+
+    return back()->withErrors([
+        'msg' => 'Unable to generate payment link: ' . json_encode($resData)
+    ]);
+}
+
 
         return back()->withErrors(['msg' => 'ABA PayWay API request failed: ' . $response->body()]);
     }
@@ -186,4 +199,18 @@ class DonationController extends Controller
         }
         return base64_encode($output);
     }
+
+    public function paymentSuccess(Request $request)
+{
+    // ABA will redirect here after payment.
+    // You can capture data from the query string or POST if provided.
+    
+    // Example: $request->all() may contain transaction info
+    // Log::info('ABA Payment Success Response:', $request->all());
+
+    return view('frontend.payment-success', [
+        'message' => 'Thank you! Your payment was successful.'
+    ]);
+}
+
 }
