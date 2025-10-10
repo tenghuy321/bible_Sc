@@ -20,7 +20,8 @@
         style="background-image: url('{{ asset('assets/images/Banners/cata_banner.png') }}'); background-size: cover; background-position: center;">
         <div class="flex items-center justify-between gap-2 w-full max-w-7xl mx-auto px-4 md:px-20 ">
             <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
-                <p class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.title-1') }}</p>
+                <p class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.title-1') }}
+                </p>
                 <h1 class="text-[20px] md:text-[50px] xl:text-[5rem] font-[600] leading-none">
                     {!! nl2br(__('messages.welcome')) !!}
                 </h1>
@@ -66,10 +67,14 @@
                             <p class="text-[14px] text-gray-600">{{ $type }}</p>
 
                             <div class="flex gap-2 mt-3">
-                                <button @click="openOrderModal('{{ $name }}', '{{ $type }}')"
+                                {{-- <button @click="openOrderModal('{{ $name }}', '{{ $type }}')"
                                     class="w-full py-2 bg-[#32CDF0] text-white rounded-md">
                                     {{ $locale === 'km' ? 'ជាវឥឡូវនេះ' : 'Buy Now' }}
-                                </button>
+                                </button> --}}
+                                <a href="https://t.me/thebiblesocietyincambodia" target="_blank"
+                                    class="w-full py-2 bg-[#32CDF0] text-white rounded-md text-center">
+                                    {{ $locale === 'km' ? 'ជាវឥឡូវនេះ' : 'Buy Now' }}
+                                </a>
 
                                 <button
                                     @click="openDetailsModal('{{ $name }}', '{{ $type }}', '{{ $size }}', '{{ $book->code ?? '' }}', '{{ $book->isbn ?? '' }}')"
@@ -89,7 +94,7 @@
         @endforelse
 
         {{-- Order Modal --}}
-        <div x-show="open && mode==='order'"
+        {{-- <div x-show="open && mode==='order'"
             class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-2" x-cloak>
             <div @click.away="closeModal()" class="bg-white rounded-lg p-6 w-96">
                 <h2 class="text-xl font-semibold mb-4" x-text="`Order: ${selectedBook.name}`"></h2>
@@ -120,7 +125,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
 
         {{-- Details Modal --}}
         <div x-show="open && mode==='details'"

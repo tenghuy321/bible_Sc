@@ -83,7 +83,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://checkout.payway.com.kh/plugins/checkout2-0.js"></script>
+    {{-- <script src="https://checkout.payway.com.kh/plugins/checkout2-0.js"></script> --}}
 
     <script>
         AOS.init();

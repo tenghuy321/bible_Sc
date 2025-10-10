@@ -58,9 +58,27 @@
                     class="w-[30vh] h-[20vh] md:w-full md:h-full object-cover object-center" />
             </div>
         </div>
+
+        <div class="flex gap-2 md:gap-[1rem] p-3 md:max-w-[720px] xl:max-w-[1200px] mx-auto overflow-hidden">
+            <div class="w-[30%] md:w-[40%]">
+                <img data-aos="fade-right" data-aos-duration="400"
+                    src="{{ asset('assets/images/Banners/ms_2.png') }}" alt="banner"
+                    class="w-[30vh] h-[20vh] md:w-full md:h-full object-cover object-center" />
+            </div>
+            <div data-tip="Scroll For Read More" class="tooltip w-[70%] md:w-[60%] pe-2">
+                <h1 data-aos="fade-right" data-aos-duration="400"
+                    class="text-[16px] md:text-[24px] text-[#4FC9EE] font-bold">
+                    {{ __('messages.title_2') }}
+                </h1>
+                <p data-aos="fade-left" data-aos-duration="600"
+                    class="text-[12px] md:text-[18px] text-[#fff] whitespace-pre-line">
+                    {{ __('messages.content_2') }}
+                </p>
+            </div>
+        </div>
     </div>
 
-    <div class="w-full h-fit bg-[#446EB6] overflow-hidden">
+    {{-- <div class="w-full h-fit bg-[#446EB6] overflow-hidden">
         <div class="flex flex-col md:flex-row">
             <div data-aos="fade-right" data-aos-duration="400"
                 class="w-full md:w-[50%]">
@@ -78,7 +96,7 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="w-full h-fit bg-[#fff]">
           <div class='w-full p-4 md:max-w-[720px] xl:max-w-[1200px] mx-auto overflow-hidden'>

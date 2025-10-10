@@ -8,7 +8,8 @@
         style="background-image: url('{{ asset('assets/images/Banners/banner.jpg') }}'); background-size: cover; background-position: center;">
         <div class="flex items-center justify-between gap-2 w-full max-w-7xl mx-auto px-4 md:px-20 ">
             <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
-                <p class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.title-1') }}</p>
+                <p class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.title-1') }}
+                </p>
                 <h1 class="text-[20px] md:text-[50px] xl:text-[5rem] font-[600] leading-none">
                     {!! nl2br(__('messages.welcome')) !!}
                 </h1>
@@ -75,6 +76,7 @@
                 </div>
             </button>
         </form>
+
     </section>
 
     <div
