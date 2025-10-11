@@ -185,7 +185,7 @@
                             <li data-aos="fade-right" data-aos-duration="{{ 300 + $index * 100 }}"
                                 class="{{ $bgColor }} w-full h-full p-3">
                                 <div class="flex flex-col">
-                                    <h1 class="text-[16px] md:text-[14px] xl:text-[20px] text-white">
+                                    <h1 class="text-[16px] md:text-[14px] xl:text-[20px] text-white min-h-[60px]">
                                         {{ app()->getLocale() === 'en' ? $category->titleEn : $category->titleKm }}
                                     </h1>
                                     <a href="{{ url(app()->getLocale() . '/' . $category->slug) }}"

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('header')
-    <h1>Version</h1>
+    <h1>Catalogues</h1>
 @endsection
 
 @section('content')
