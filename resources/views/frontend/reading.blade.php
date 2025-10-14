@@ -54,10 +54,11 @@
     locale: '{{ $locale }}',
     // Restore from localStorage or default to first book/chapter
     selectedVersionName: '{{ $locale === 'en' ? $version->titleEn : $version->titleKm }}',
-    selectedBook: localStorage.getItem('selectedBook') || '{{ $books->first()->id ?? '' }}',
-    selectedBookName: localStorage.getItem('selectedBookName') || '{{ $locale === 'en' ? $books->first()->nameEn ?? '' : $books->first()->nameKm ?? '' }}',
-    selectedChapter: localStorage.getItem('selectedChapter') || '{{ $books->first()?->chapters->first()?->id ?? '' }}',
-    selectedChapterName: localStorage.getItem('selectedChapterName') || '{{ $locale === 'en' ? $books->first()?->chapters->first()?->nameEn ?? '' : $books->first()?->chapters->first()?->nameKm ?? '' }}',
+    selectedBook: '{{ $books->first()->id ?? '' }}',
+    selectedBookName: '{{ $locale === 'en' ? $books->first()->nameEn ?? '' : $books->first()->nameKm ?? '' }}',
+    selectedChapter: '{{ $books->first()?->chapters->first()?->id ?? '' }}',
+    selectedChapterName: '{{ $locale === 'en' ? $books->first()?->chapters->first()?->nameEn ?? '' : $books->first()?->chapters->first()?->nameKm ?? '' }}',
+    {{-- selectedChapterName: localStorage.getItem('selectedChapterName') || '{{ $locale === 'en' ? $books->first()?->chapters->first()?->nameEn ?? '' : $books->first()?->chapters->first()?->nameKm ?? '' }}', --}}
     bookPopup: false,
     chapterPopup: false,
     versionPopup: false,

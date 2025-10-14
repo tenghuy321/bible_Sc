@@ -120,7 +120,7 @@ class DonationController extends Controller
         $currency = 'USD';
         $amount = number_format((float)$validated['amount'], 2, '.', '');
 
-        $expiredDate = time() + 3600; // 1 hour validity
+        $expiredDate = time() + 3600; 
         $requestTime = date('YmdHis');
         $merchantRefNo = 'REF' . $requestTime;
 
@@ -197,12 +197,5 @@ class DonationController extends Controller
         }
         return base64_encode($output);
     }
-
-    // public function paymentSuccess(Request $request)
-    // {
-    //     return view('frontend.payment-success', [
-    //         'message' => 'Thank you! Your payment was successful.'
-    //     ]);
-    // }
 
 }
