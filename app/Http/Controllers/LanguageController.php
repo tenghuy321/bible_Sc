@@ -9,7 +9,7 @@ class LanguageController extends Controller
     public function switch(Request $request, $locale)
     {
         // List of allowed locales
-        $availableLocales = ['en', 'km']; // Add more as needed
+        $availableLocales = ['en', 'km'];
 
         // Check if the requested locale is valid
         if (in_array($locale, $availableLocales)) {

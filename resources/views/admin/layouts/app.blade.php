@@ -112,9 +112,25 @@
                                 <span class="text nav-text">Chapter</span>
                             </a>
                         </li>
+
+
+                        <li
+                            class="nav-link {{ Request::is('mission_backend') ? 'bg-[#4FC9EE] rounded-md !text-[#ffffff]' : '' }}">
+                            <a href="{{ url('mission_backend') }}">
+                                <i class='bx bxs-notepad icon'></i>
+                                <span class="text nav-text">Mission</span>
+                            </a>
+                        </li>
+
+                        <li
+                            class="nav-link {{ Request::is('news_backend') ? 'bg-[#4FC9EE] rounded-md !text-[#ffffff]' : '' }}">
+                            <a href="{{ url('news_backend') }}">
+                                <i class='bx bxs-notepad icon'></i>
+                                <span class="text nav-text">News</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
-
 
                 <div class="bottom-content">
                     <li class="">

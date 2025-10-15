@@ -12,42 +12,7 @@
     }
 @endphp
 
-{{-- <div class="w-full h-[60vh] md:h-screen bg-gray-100 flex items-center justify-center"
-    style="background-image: url('{{ asset('assets/images/Banners/aboutus.png') }}'); background-size: cover; background-position: center;">
-    <div class="relative flex justify-between items-center max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] md:space-x-[8rem] xl:space-x-[14rem] overflow-hidden">
-        <div class="w-full">
-            <p data-aos="fade-right" data-aos-duration="400"
-                class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">
-                សមាគមព្រះគម្ពីរនៅកម្ពុជា
-            </p>
-
-            <h1 data-aos="fade-right" data-aos-duration="500"
-                class="font-bold text-wrap text-[#ffffff]
-                {{ $locale === 'km' ? 'text-[20px] md:text-[50px] xl:text-[5rem]' : 'text-[20px] leading-[20px] md:text-[50px] md:leading-[50px] xl:text-[5rem] xl:leading-[5rem]' }}">
-                {{ __('messages.welcome') }}
-            </h1>
-        </div>
-
-        <p data-aos="fade-left" data-aos-duration="600"
-            class="w-full text-[14px] xl:text-[24px] text-[#ffffff] font-[400]">
-            {{ __('messages.quote') }}
-        </p>
-    </div>
-</div> --}}
-    <section class="w-full h-[60vh] md:h-screen flex items-center justify-center overflow-hidden"
-        style="background-image: url('{{ asset('assets/images/Banners/aboutus.png') }}'); background-size: cover; background-position: center;">
-        <div class="flex items-center justify-between gap-2 w-full max-w-7xl mx-auto px-4 md:px-20 ">
-            <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
-                <p class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.title-1') }}</p>
-                <h1 class="text-[20px] md:text-[50px] xl:text-[5rem] font-[600] leading-none">
-                    {!! nl2br(__('messages.welcome')) !!}
-                </h1>
-            </div>
-
-            <p data-aos="fade-left" data-aos-duration="1000"
-                class="w-full text-[14px] xl:text-[24px] text-[#ffffff] font-[400] flex justify-end">
-                {{ __('messages.quote') }}</p>
-        </div>
+    <section class="w-full h-[15vh] md:h-[30vh] flex items-center justify-center overflow-hidden bg-[#fff] md:bg-[#000]">
     </section>
 
 <div class="w-full max-w-7xl mx-auto px-2 py-10" x-data="{
@@ -132,7 +97,7 @@
 
     {{-- Version Dropdown --}}
     <div class="relative mb-4">
-        <label class="block mb-2 font-bold text-gray-700">
+        <label class="block mb-2 font-bold text-[#000]">
             {{ $locale === 'en' ? 'Select Version' : 'ជ្រើសរើសកំណែ' }}
         </label>
         <button @click.stop="versionPopup = !versionPopup"
@@ -161,13 +126,13 @@
         <div class="w-full grid grid-cols-2 gap-4 mb-6">
             {{-- Book --}}
             <div class="relative" x-data="{ searchBook: '' }">
-                <label class="block mb-2 font-bold text-gray-700">
+                <label class="block mb-2 font-bold text-[#000]">
                     {{ $locale === 'en' ? 'Select Book' : 'ជ្រើសរើសគម្ពីរ' }}
                 </label>
                 <button @click.stop="bookPopup = !bookPopup; chapterPopup=false"
                         class="w-full border rounded-md px-3 py-2 flex items-center justify-between bg-white hover:bg-gray-100">
                     <span x-text="selectedBookName"></span>
-                    <svg class="w-5 h-5 text-gray-500 transform transition-transform"
+                    <svg class="w-5 h-5 text-[#000] transform transition-transform"
                         :class="bookPopup ? 'rotate-180' : ''"
                         fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
@@ -196,13 +161,13 @@
 
             <!-- Chapter -->
             <div class="relative">
-                <label class="block mb-2 font-bold text-gray-700">
+                <label class="block mb-2 font-bold text-[#000]">
                     {{ $locale === 'en' ? 'Select Chapter' : 'ជ្រើសរើសជំពូក' }}
                 </label>
                 <button @click.stop="chapterPopup = !chapterPopup; bookPopup=false"
                         class="w-full border rounded-md px-3 py-2 flex items-center justify-between bg-white hover:bg-gray-100">
                     <span x-text="selectedChapterName"></span>
-                    <svg class="w-5 h-5 text-gray-500 transform transition-transform"
+                    <svg class="w-5 h-5 text-[#000] transform transition-transform"
                         :class="chapterPopup ? 'rotate-180' : ''"
                         fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">

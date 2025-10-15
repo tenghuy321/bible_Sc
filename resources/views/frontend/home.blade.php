@@ -6,18 +6,13 @@
 
     <section class="w-full h-[60vh] md:h-screen flex items-center justify-center overflow-hidden"
         style="background-image: url('{{ asset('assets/images/Banners/banner.jpg') }}'); background-size: cover; background-position: center;">
-        <div class="flex items-center justify-between gap-2 w-full max-w-7xl mx-auto px-4 md:px-20 ">
+        <div class="w-full max-w-7xl mx-auto text-center">
             <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
-                <p class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.title-1') }}
-                </p>
-                <h1 class="text-[20px] md:text-[50px] xl:text-[5rem] font-[600] leading-none">
-                    {!! nl2br(__('messages.welcome')) !!}
+                <p class="text-[20px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.bible') }}</p>
+                <h1 class="text-[30px] md:text-[50px] xl:text-[5rem] font-[600] leading-none">
+                    {{ __('messages.everyone') }}
                 </h1>
             </div>
-
-            <p data-aos="fade-left" data-aos-duration="1000"
-                class="w-full text-[14px] xl:text-[24px] text-[#ffffff] font-[400] flex justify-end">
-                {{ __('messages.quote') }}</p>
         </div>
     </section>
 
@@ -33,44 +28,34 @@
         @endphp
 
         <form method="POST" action="{{ route('donations.create-payment') }}" x-data="{ currency: '{{ old('currency', 'usd') }}' }"
-            class="w-full md:flex md:gap-2">
+            class="w-full xl:max-w-[70%] mx-auto flex flex-col md:flex-row items-stretch justify-center md:space-x-4 space-y-4 md:space-y-0">
             @csrf
 
-            <!-- Left side: Currency & Amount -->
-            <div class="w-full md:w-[60%] space-y-4">
+            <div class="flex flex-1 items-stretch space-x-2">
 
                 <!-- Currency Selection -->
-                <div class="flex items-center justify-center space-x-2">
-                    <label @click="currency='usd'"
-                        class="w-full p-2 md:p-3 rounded-full cursor-pointer transition-all"
-                        :class="currency === 'usd' ? 'bg-[#4FC9EE] text-white' : 'bg-white text-[#4FC9EE]'">
-                        <h1 class="text-[15px] xl:text-[24px] font-[600] text-center">
-                            {{ __('messages.usd') }}
-                        </h1>
-                        <input type="radio" name="currency" value="usd" class="hidden"
-                            :checked="currency === 'usd'">
-                    </label>
-                </div>
+                <label @click="currency='usd'"
+                    class="w-full sm:flex-1 flex items-center justify-center rounded-full cursor-pointer transition-all px-4 py-3 md:py-2"
+                    :class="currency === 'usd' ? 'bg-[#4FC9EE] text-white' : 'bg-white text-[#4FC9EE]'">
+                    <h1 class="text-[15px] xl:text-[20px] font-[600] text-center">
+                        {{ __('messages.usd') }}
+                    </h1>
+                    <input type="radio" name="currency" value="usd" class="hidden" :checked="currency === 'usd'">
+                </label>
 
                 <!-- Donation Amount -->
-                <div>
-                    <input type="number" name="amount" placeholder="{{ __('messages.amount') }}"
-                        value="{{ old('amount') }}" required step="0.01" :min="currency === 'usd' ? 0.01 : 100"
-                        class="w-full xl:text-[30px] py-2 rounded-full text-white placeholder:text-white bg-[#4FC9EE] px-6 outline-none">
-                    <p x-text="error" class="text-red-500 text-sm mt-1"></p>
-                </div>
-
+                <input type="number" name="amount" placeholder="{{ __('messages.amount') }}" value="{{ old('amount') }}"
+                    required step="0.01" :min="currency === 'usd' ? 0.01 : 100"
+                    class="w-full sm:flex-[2] text-white placeholder:text-white bg-[#4FC9EE] rounded-full px-6 py-3 md:py-2 outline-none text-[15px] xl:text-[20px]">
             </div>
 
             <!-- Right side: Submit Button -->
             <button type="submit"
-                class="w-full md:w-[40%] h-full rounded-full bg-[#4FC9EE] shadow-sm drop-shadow-lg py-5 xl:py-9 mt-4 md:mt-0">
-                <div class="flex items-center justify-center space-x-4 h-[48px] md:h-[60px]">
-                    <div>
-                        <img src="{{ asset('assets/images/donate.svg') }}" alt="Donate"
-                            class="w-[50px] mx-auto object-contain">
-                    </div>
-                    <p class="xl:text-[30px] text-white font-[400] tracking-normal">
+                class="flex items-center justify-center flex-none md:w-[30%] rounded-full bg-[#4FC9EE] py-3 md:py-2">
+                <div class="flex items-center justify-center space-x-3">
+                    <img src="{{ asset('assets/images/donate.svg') }}" alt="Donate"
+                        class="w-[30px] md:w-[40px] object-contain">
+                    <p class="text-white text-[15px] xl:text-[20px] font-medium">
                         {{ __('messages.donate') }}
                     </p>
                 </div>
@@ -79,31 +64,12 @@
 
     </section>
 
-    <div
-        class="w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto px-3 flex flex-wrap pb-[10rem] xl:pb-[12rem] overflow-hidden">
-        <div class="w-full md:w-[30%]">
-            <span>
-                <img data-aos="fade-down" data-aos-duration="400" src="{{ asset('assets/images/icons/mission.svg') }}"
-                    alt="banner" class="w-[50px] h-[50px] xl:w-[100px] xl:h-[100px] object-cover object-center p-2">
-            </span>
-            <h1 data-aos="fade-right" data-aos-duration="500"
-                class="text-[20px] md:text-[30px] xl:text-[40px] text-[#4FC9EE] font-[700] text-wrap">
-                {{ __('messages.sop') }}
-            </h1>
-        </div>
-
-        <div data-aos="fade-left" data-aos-duration="500" class="w-full md:w-[70%]">
-            <p class="text-[10px] md:text-[14px] xl:text-[20px] text-justify text-[#000]">
-                {{ __('messages.sop_content') }}
-            </p>
-        </div>
-    </div>
 
     <div class="w-full h-fit bg-[linear-gradient(85.15deg,_rgba(30,_30,_30,_0.8)_0.43%,_rgba(7,_32,_39,_0.64)_98.29%)]">
         <div
             class="w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto h-full -translate-y-[20%] md:-translate-y-[28%]">
             <div
-                class="w-full h-fit md:h-[35vh] lg:h-[30vh] xl:h-[50vh] 2xl:h-[40vh] flex flex-col md:flex-row pb-5 overflow-hidden">
+                class="w-full h-fit md:h-[35vh] lg:h-[50vh] 2xl:h-[40vh] flex flex-col md:flex-row pb-5 overflow-hidden">
                 <div class="w-full max-sm:h-[32vh] md:w-[40%] md:h-full">
                     <img src="{{ asset('assets/images/Banners/banner_1.png') }}" alt="banner" data-aos="fade-right"
                         data-aos-duration="400"
@@ -111,9 +77,9 @@
                 </div>
 
                 <div data-aos="fade-left" data-aos-duration="400"
-                    class="flex flex-col xl:flex-row w-full md:w-[60%] md:h-full gap-1 lg:gap-[1rem] bg-[#4FC9EE] p-5 md:p-3 max-sm:rounded-b-[30px] md:rounded-r-[30px]">
+                    class="flex flex-col lg:flex-row w-full md:w-[60%] md:h-full gap-1 lg:gap-[1rem] bg-[#4FC9EE] p-5 md:p-3 max-sm:rounded-b-[30px] md:rounded-r-[30px]">
                     <div
-                        class="w-[100%] xl:w-[30%] flex xl:flex-col xl:justify-between items-center xl:items-start xl:ps-5 xl:py-5">
+                        class="w-[100%] lg:w-[40%] xl:w-[30%] flex lg:flex-col lg:justify-between items-center lg:items-start xl:ps-5 xl:py-5">
                         <span>
                             <img src="{{ asset('assets/images/icons/time.svg') }}" alt="icon"
                                 class="w-[50px] h-[50px] xl:w-[100px] xl:h-[100px] object-cover object-center p-2">
@@ -125,7 +91,7 @@
                     </div>
 
                     {{-- Dynamic List --}}
-                    <div class="w-[100%] xl:w-[70%]">
+                    <div class="w-[100%] lg:w-[60%] xl:w-[70%]">
                         <ul class="text-[#fff] space-y-1">
                             @foreach ($readings as $item)
                                 <li data-aos="fade-left" data-aos-duration="600"
@@ -141,7 +107,7 @@
 
         {{-- Second Section --}}
         <div
-            class="flex flex-col md:flex-row w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto gap-4 pb-10 xl:pb-0 md:-translate-y-[30%] xl:translate-x-0 overflow-hidden">
+            class="flex flex-col md:flex-row w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto gap-4 pb-10 xl:pb-0 md:-translate-y-[30%] lg:-translate-y-[20%] xl:translate-x-0 overflow-hidden">
 
             <div class="max-sm:-translate-y-[40%] xl:w-[30%] overflow-hidden">
                 <h1 data-aos="fade-right" data-aos-duration="200"
@@ -207,7 +173,7 @@
         </div>
     </div>
 
-    <div class="w-full h-fit max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto py-10 px-5 overflow-hidden">
+    {{-- <div class="w-full h-fit max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto py-10 px-5 overflow-hidden">
         <div class="flex flex-col xl:flex-row space-y-5 xl:space-x-5">
             <div class="w-full xl:w-[20%]">
                 <div
@@ -254,7 +220,161 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> --}}
+
+    <section class="w-full h-fit lg:max-w-[1200px] mx-auto py-10 px-2">
+        <div class="my-5">
+            <h1 class="text-gradient text-[20px] md:text-[25px] font-[600] max-w-[250px] mb-2 md:max-w-full">
+                {{ app()->getLocale() === 'km' ? 'បច្ចុប្បន្នភាពចុងក្រោយ' : 'Latest Update' }}</h1>
+            <hr class="w-full h-[2px] bg-[#000]">
+        </div>
+        <div class="w-full  grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 text-[#000] overflow-hidden">
+            <div>
+                @php
+                    $mission_images = json_decode($latestMission->image, true) ?? [];
+                @endphp
+                <div class="relative w-full h-[300px] group overflow-hidden">
+                    <div class="absolute left-0 top-4 bg-[#4FC9EE] px-4 py-1 z-10">
+                        <h1 class="text-gradient text-[16px] md:text-[20px] font-[600] max-w-[250px] md:max-w-full">
+                            {{ app()->getLocale() === 'km' ? 'បេសកកម្ម' : 'Mission' }}
+                        </h1>
+                    </div>
+
+                    <img src="{{ asset($mission_images[0]) }}" alt=""
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+
+                    <div class="absolute inset-0 flex flex-col justify-end px-6 py-4 group-hover:bg-[#000]/50">
+                        <h1 class="text-white text-[16px] md:text-[18px] font-semibold drop-shadow-md mb-2 z-10">
+                            {{ app()->getLocale() === 'km' ? $latestMission->title_kh : $latestMission->title_en }}
+                        </h1>
+
+                        <div
+                            class="max-h-0 overflow-hidden opacity-0 group-hover:max-h-[100px] group-hover:opacity-100 transition-all duration-500 ease-in-out rounded">
+                            <div
+                                class="text-[13px] text-white line-clamp-2 prose prose-p:text-white prose-li:m-0 prose-strong:text-white">
+                                {!! app()->getLocale() === 'km' ? $latestMission->content_kh : $latestMission->content_en !!}
+                            </div>
+
+                            <div
+                                class="mt-2 inline-block px-4 py-1.5 bg-white text-black text-[13px] rounded-full font-medium hover:bg-[#4FC9EE] hover:text-white transition-all duration-300">
+                                <a href="{{ route('mission') }}">
+                                    {{ app()->getLocale() === 'km' ? 'បេសកកម្ម' : 'More Mission' }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                @php
+                    $news_images = json_decode($latestNews->image, true) ?? [];
+                @endphp
+                <div class="relative w-full h-[300px] group overflow-hidden">
+                    <div class="absolute left-0 top-4 bg-[#4FC9EE] px-4 py-1 z-10">
+                        <h1 class="text-gradient text-[16px] md:text-[20px] font-[600] max-w-[250px] md:max-w-full">
+                            {{ app()->getLocale() === 'km' ? 'ព័ត៌មាន' : 'News' }}
+                        </h1>
+                    </div>
+
+                    <img src="{{ asset($news_images[0]) }}" alt=""
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+
+                    <div class="absolute inset-0 flex flex-col justify-end px-6 py-4 group-hover:bg-[#000]/50">
+                        <h1 class="text-white text-[16px] md:text-[18px] font-semibold drop-shadow-md mb-2 z-10">
+                            {{ app()->getLocale() === 'km' ? $latestNews->title_kh : $latestNews->title_en }}
+                        </h1>
+
+                        <div
+                            class="max-h-0 overflow-hidden opacity-0 group-hover:max-h-[100px] group-hover:opacity-100 transition-all duration-500 ease-in-out rounded">
+                            <div
+                                class="text-[13px] text-white line-clamp-2 prose prose-p:text-white prose-li:m-0 prose-strong:text-white">
+                                {!! app()->getLocale() === 'km' ? $latestNews->content_kh : $latestNews->content_en !!}
+                            </div>
+
+                            <div>
+                                <div
+                                    class="mt-2 inline-block px-4 py-1.5 bg-white text-black text-[13px] rounded-full font-medium hover:bg-[#4FC9EE] hover:text-white transition-all duration-300">
+                                    <a href="{{ route('more_details', ['id' => $latestNews->id]) }}">
+                                        {{ app()->getLocale() === 'km' ? 'ព័ត៌មានបន្ថែម' : 'Read More' }}
+                                    </a>
+                                </div>
+
+                                <div
+                                    class="mt-2 inline-block px-4 py-1.5 bg-white text-black text-[13px] rounded-full font-medium hover:bg-[#4FC9EE] hover:text-white transition-all duration-300">
+                                    <a href="{{ route('news_item') }}">
+                                        {{ app()->getLocale() === 'km' ? 'ព័ត៌មាន' : 'More Video' }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                @php
+                    preg_match(
+                        '/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w\-]+)/',
+                        $latestVlog->video_Url,
+                        $matches,
+                    );
+                    $videoId = $matches[1] ?? null;
+
+                    $thumbnailUrl = $videoId
+                        ? "https://img.youtube.com/vi/{$videoId}/hqdefault.jpg"
+                        : asset('images/default-thumbnail.jpg');
+                @endphp
+
+                <div class="relative w-full h-[300px] group overflow-hidden cursor-pointer"
+                    onclick="openVideoModal('{{ $videoId }}')">
+                    <div class="absolute left-0 top-4 bg-[#4FC9EE] px-4 py-1 z-10">
+                        <h1 class="text-gradient text-[16px] md:text-[20px] font-[600] max-w-[250px] md:max-w-full">
+                            {{ app()->getLocale() === 'km' ? 'វិដេអូ' : 'Vlog' }}
+                        </h1>
+                    </div>
+
+                    <img src="{{ $thumbnailUrl }}" alt="Vlog Thumbnail"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+
+                    <div class="absolute inset-0 flex flex-col justify-end px-6 py-4 group-hover:bg-[#000]/50">
+                        <h1 class="text-white text-[16px] md:text-[18px] font-semibold drop-shadow-md mb-2 z-10">
+                            {{ app()->getLocale() === 'km' ? $latestVlog->title_km : $latestVlog->title_en }}
+                        </h1>
+
+                        <div
+                            class="max-h-0 overflow-hidden opacity-0 group-hover:max-h-[100px] group-hover:opacity-100 transition-all duration-500 ease-in-out rounded">
+                            <div
+                                class="text-[13px] text-white line-clamp-2 prose prose-p:text-white prose-li:m-0 prose-strong:text-white">
+                                {!! app()->getLocale() === 'km' ? $latestVlog->paragraph_km : $latestVlog->paragraph_en !!}
+                            </div>
+
+                            <div
+                                class="mt-2 inline-block px-4 py-1.5 bg-white text-black text-[13px] rounded-full font-medium hover:bg-[#4FC9EE] hover:text-white transition-all duration-300">
+                                <a href="{{ route('vlogs') }}">
+                                    {{ app()->getLocale() === 'km' ? 'វិដេអូបន្ថែម' : 'More Video' }}
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                {{-- YouTube Video Modal --}}
+                <div id="videoModal"
+                    class="fixed inset-0 z-50 hidden bg-black/70 flex items-center justify-center transition-opacity duration-300">
+                    <div
+                        class="relative bg-black rounded-lg overflow-hidden w-[90%] max-w-3xl aspect-video transform scale-90 opacity-0 transition-all duration-300">
+                        <iframe id="videoFrame" class="w-full h-full" src="" frameborder="0"
+                            allowfullscreen></iframe>
+                        <button onclick="closeVideoModal()"
+                            class="absolute top-2 right-2 text-white text-2xl font-bold hover:text-gray-300">&times;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div
         class="w-full h-fit max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto my-[1.5rem] px-3 py-[2rem] overflow-hidden {{ app()->getLocale() === 'km' ? 'font-krasar' : 'font-gotham' }}">
@@ -262,9 +382,8 @@
 
             <div class="w-full h-full flex flex-col md:flex-row row-span-1 xl:col-span-2">
                 <img src="{{ asset('assets/images/Banners/banner_3.png') }}" alt="banner" data-aos="fade-right"
-                    data-aos-offset="500" data-aos-duration='500'
-                    class="w-full md:w-[50%] h-full object-cover object-center" />
-                <div data-aos="fade-left" data-aos-offset="500" data-aos-duration='600'
+                    data-aos-duration='500' class="w-full md:w-[50%] h-full object-cover object-center" />
+                <div data-aos="fade-left" data-aos-duration='600'
                     class="w-full md:w-[50%] p-4 bg-[#00AFD7] space-y-[1rem] transition-all duration-300">
                     <h1 class="text-[16px] text-[#ffffff] text-balance font-semibold">
                         {{ __('messages.ofb_title') }}
@@ -279,9 +398,8 @@
 
             <div class="w-full h-full flex flex-col md:flex-row row-span-1 xl:col-span-2">
                 <img src="{{ asset('assets/images/Banners/banner_5.png') }}" alt="banner" data-aos="fade-right"
-                    data-aos-offset="500" data-aos-duration='500'
-                    class="w-full md:w-[50%] h-full object-cover object-center" />
-                <div data-aos="fade-left" data-aos-offset="500" data-aos-duration='600'
+                    data-aos-duration='500' class="w-full md:w-[50%] h-full object-cover object-center" />
+                <div data-aos="fade-left" data-aos-duration='600'
                     class="w-full md:w-[50%] md:order-first xl:order-last p-4 bg-[#71c7a5] space-y-[1rem] transition-all duration-300">
                     <h1 class="text-[16px] text-[#ffffff] text-balance font-semibold">
                         {{ __('messages.ofb_title_1') }}
@@ -296,9 +414,8 @@
 
             <div class="w-full md:h-[30vh] xl:h-full row-span-1 xl:row-span-2 flex flex-col md:flex-row xl:flex-col">
                 <img src="{{ asset('assets/images/Banners/banner_4.png') }}" alt="banner" data-aos="fade-down"
-                    data-aos-offset="500" data-aos-duration='500'
-                    class="w-full md:w-[50%] xl:w-full h-full object-cover object-center" />
-                <div data-aos="fade-up" data-aos-offset="500" data-aos-duration='600'
+                    data-aos-duration='500' class="w-full md:w-[50%] xl:w-full h-full object-cover object-center" />
+                <div data-aos="fade-up" data-aos-duration='600'
                     class="w-full md:w-[50%] xl:w-full h-full xl:h-[30vh] p-4 bg-[#456eb6] space-y-[1rem] transition-all duration-300">
                     <h1 class="text-[16px] text-[#ffffff] text-balance font-semibold">
                         {{ __('messages.ofb_title_2') }}
@@ -317,4 +434,37 @@
 @section('js')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://checkout.payway.com.kh/plugins/checkout2-0.js"></script>
+
+    <script>
+        const modal = document.getElementById('videoModal');
+        const modalContent = modal.querySelector('div');
+        const iframe = document.getElementById('videoFrame');
+
+        function openVideoModal(videoId) {
+            if (!videoId) return;
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modalContent.classList.remove('scale-90', 'opacity-0');
+            }, 10);
+        }
+
+        function closeVideoModal() {
+            modalContent.classList.add('scale-90', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                iframe.src = '';
+            }, 200);
+        }
+
+        // Close on background click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeVideoModal();
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeVideoModal();
+        });
+    </script>
 @endsection

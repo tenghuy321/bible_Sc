@@ -6,9 +6,12 @@ return [
     "mission" => "Mission",
     "catalogues" => "Bibles and Catalogues",
     "contact" => "Contact Us",
+    "news" => "News",
     "vlogs" => "Vlogs",
 
     "welcome" => "The Bible Society in Cambodia.",
+    "bible" => "Bible for",
+    "everyone" => "Everyone",
     "title-1" => "Welcome to",
 
     "quote" => "GOD’S WORD Living Hope for All.",

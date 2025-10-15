@@ -71,14 +71,14 @@
                         ['name' => 'about', 'label' => 'messages.about'],
                         ['name' => 'mission', 'label' => 'messages.mission'],
                         ['name' => 'cata', 'label' => 'messages.catalogues'],
-                        ['name' => 'contact', 'label' => 'messages.contact'],
+                        ['name' => 'news_item', 'label' => 'messages.news'],
                         ['name' => 'vlogs', 'label' => 'messages.vlogs'],
                     ];
                 @endphp
 
                 @foreach ($routes as $route)
                     <a href="{{ route($route['name']) }}"
-                    class="relative inline-block text-[20px] font-semibold whitespace-nowrap
+                        class="relative inline-block text-[20px] font-semibold whitespace-nowrap
                     {{ request()->routeIs($route['name']) ? 'text-[#32CDF0] before:scale-x-100' : 'text-[#fff] before:scale-x-0' }}
                     before:absolute before:left-0 before:-bottom-1 before:w-full before:h-[3px] before:bg-[#32CDF0] before:rounded-full
                     before:origin-bottom-left hover:before:scale-x-100 before:transition-all before:duration-300">
@@ -91,7 +91,8 @@
     </div>
 
 
-    <div class="hidden xl:flex w-full items-center justify-end gap-2 py-4 -ms-6" data-aos="fade-left" data-aos-duration="1000">
+    <div class="hidden xl:flex w-full items-center justify-end gap-2 py-4 -ms-6" data-aos="fade-left"
+        data-aos-duration="1000">
         <!-- Clickable flag to switch language -->
         <img src="{{ $locale === 'km' ? asset('assets/images/icons/kh-flag.png') : asset('assets/images/icons/usa-flag.png') }}"
             alt="Flag" class="w-8 h-8 rounded-full">
@@ -108,7 +109,8 @@
         </a>
     </div>
 
-    <div class="hidden xl:flex items-center justify-between border-b border-gray-900/10 py-6 lg:border-none h-[5rem] px-10 bg-[#fff] rounded-full">
+    <div
+        class="hidden xl:flex items-center justify-between border-b border-gray-900/10 py-6 lg:border-none h-[5rem] px-10 bg-[#fff] rounded-full">
         <div class="flex flex-1 items-center gap-4" data-aos="fade-right" data-aos-duration="1000">
             <img src="{{ asset('assets/images/logo.svg') }}" alt="">
             <a href="{{ url('/#home') }}" class="flex items-center gap-6 bg-[#50bbed] ps-6 pe-2 py-1 rounded-full">
@@ -170,12 +172,12 @@
                     hover:before:scale-x-100 hover:before:origin-bottom-left before:transition-all before:duration-300">
                 {{ __('messages.catalogues') }}
             </a>
-            <a href="{{ route('contact') }}"
-                class="relative text-[20px] {{ request()->routeIs('contact') ? 'text-[#32CDF0] before:scale-x-100' : 'text-[#000]' }}
+            <a href="{{ route('news_item') }}"
+                class="relative text-[20px] {{ request()->routeIs('news_item') ? 'text-[#32CDF0] before:scale-x-100' : 'text-[#000]' }}
                     before:absolute before:-bottom-9 before:w-full before:h-[4px] before:bg-[#32CDF0]
                     before:rounded-full before:scale-x-0 before:origin-bottom-right
                     hover:before:scale-x-100 hover:before:origin-bottom-left before:transition-all before:duration-300">
-                {{ __('messages.contact') }}
+                {{ __('messages.news') }}
             </a>
             <a href="{{ route('vlogs') }}"
                 class="relative text-[20px] {{ request()->routeIs('vlogs') ? 'text-[#32CDF0] before:scale-x-100' : 'text-[#000]' }}
@@ -185,5 +187,14 @@
                 {{ __('messages.vlogs') }}
             </a>
         </div>
+
+        <div class="pl-6" data-aos="fade-left" data-aos-duration="1000">
+            <a href="{{ url(app()->getLocale() . '/' . $versions_item->slug) }}"
+                class="w-fit bg-[#50bbed] text-[12px] xl:text-[24px] text-black rounded-full px-[15px] py-[2px] xl:px-[24px] mt-2">
+                {{ __('messages.read') }}
+            </a>
+        </div>
     </div>
+
+
 </nav>

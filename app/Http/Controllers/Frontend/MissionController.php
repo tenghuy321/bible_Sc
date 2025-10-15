@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Mission;
+use App\Models\Version;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MissionController extends Controller
 {
     public function index()
     {
-        return view('frontend.mission');
+        $data['missions'] = Mission::get();
+        $data['versions_item'] = Version::where('slug', '=', 'khmer-standard-version-khsv')->first();
+
+        return view('frontend.mission', $data);
     }
 }

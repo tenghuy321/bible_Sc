@@ -34,7 +34,7 @@
             title: "{{ session('error') }}"
         });
     </script>
-@elseif ($errors->any())
+{{-- @elseif ($errors->any())
     <script>
         const Toast = Swal.mixin({
             toast: true,
@@ -54,5 +54,5 @@
                 title: "{{ $error }}"
             });
         @endforeach
-    </script>
+    </script> --}}
 @endif

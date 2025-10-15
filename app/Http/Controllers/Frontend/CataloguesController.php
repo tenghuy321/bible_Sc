@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\CatalogueBook;
+use App\Models\Version;
 use App\Models\Catalogues;
 use Illuminate\Http\Request;
+use App\Models\CatalogueBook;
+use App\Http\Controllers\Controller;
 
 class CataloguesController extends Controller
 {
     public function index()
     {
-        $catalogues = Catalogues::with('catabooks')->get();
+        $data['catalogues'] = Catalogues::with('catabooks')->get();
+        $data['versions_item'] = Version::where('slug', '=', 'khmer-standard-version-khsv')->first();
 
-        return view('frontend.catalogues', compact('catalogues'));
+
+        return view('frontend.catalogues', $data);
     }
 
 

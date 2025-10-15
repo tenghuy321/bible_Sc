@@ -6,9 +6,9 @@
             <li class="space-y-3">
                 <img src="{{ asset('assets/images/icons/logo_black.png') }}" alt="logo"
                     class="w-[100px] h-[100px] mx-auto" />
-                <h1 class="text-[20px] text-[#ffffff] text-center font-bold my-1">
+                {{-- <h1 class="text-[20px] text-[#ffffff] text-center font-bold my-1">
                     {{ __('messages.actnow') }}
-                </h1>
+                </h1> --}}
                 <a href="{{ url('/#home') }}"
                     class="flex space-x-[3rem] w-[50%] md:w-fit mx-auto bg-[#ffffff] rounded-full justify-between items-center ps-3 pe-2 py-1">
                     <span
@@ -42,8 +42,8 @@
                 <h1 class="text-[20px] text-[#000] text-start font-semibold my-1">
                     {{ __('messages.bsf') }}
                 </h1>
-                <p class="text-[14px] text-[#fff]">{{ __('messages.address') }}</p>
-                <p class="text-[14px] text-[#fff]">
+                <p class="text-[14px] text-[#000]">{{ __('messages.address') }}</p>
+                <p class="text-[14px] text-[#000]">
                     {{ __('messages.office_hour') }}<br>
                     {{ __('messages.date_1') }}<br>
                     {{ __('messages.date_2') }}
@@ -53,14 +53,14 @@
             {{-- Navigation Links & Social Media --}}
             <li class="space-y-2 list-none py-5 xl:py-0">
                 <h1 class="text-[20px] text-[#000] text-start font-semibold my-1">{{ __('messages.information') }}</h1>
-                <ul class="flex flex-col space-y-1 text-white">
+                <ul class="flex flex-col space-y-1 text-[#000]">
                     @php
                         $routes = [
                             ['name' => 'home', 'label' => 'messages.home'],
                             ['name' => 'about', 'label' => 'messages.about'],
                             ['name' => 'mission', 'label' => 'messages.mission'],
                             ['name' => 'cata', 'label' => 'messages.catalogues'],
-                            ['name' => 'contact', 'label' => 'messages.contact'],
+                            ['name' => 'news_item', 'label' => 'messages.news'],
                             ['name' => 'vlogs', 'label' => 'messages.vlogs'],
                         ];
                     @endphp
@@ -68,7 +68,7 @@
                     @foreach ($routes as $route)
                         <a href="{{ route($route['name']) }}"
                             class="relative inline-block text-[14px] font-semibold whitespace-nowrap
-                    {{ request()->routeIs($route['name']) ? 'text-[#000]' : 'text-[#fff]' }}">
+                    {{ request()->routeIs($route['name']) ? 'text-[#fff]' : 'text-[#000]' }}">
                             {{ __($route['label']) }}
                         </a>
                     @endforeach
@@ -77,7 +77,7 @@
                 <h1 class="text-[20px] text-[#000] text-start font-semibold my-1">{{ __('messages.follow_us') }}</h1>
                 <ul class="flex space-x-2 pb-5 pt-2">
                     <li><a href="https://www.youtube.com/@BibleSocietyInCambodia/featured"
-                            class="shadow-sm drop-shadow-lg text-white">
+                            class="shadow-sm drop-shadow-lg text-[#000]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -89,7 +89,7 @@
                             </svg>
                         </a></li>
                     <li><a href="https://www.tiktok.com/@biblesocietyincambodia"
-                            class="shadow-sm drop-shadow-lg text-white">
+                            class="shadow-sm drop-shadow-lg text-[#000]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -100,7 +100,7 @@
                             </svg>
                         </a></li>
                     <li><a href="https://www.facebook.com/BibleSocietyInCambodia/"
-                            class="shadow-sm drop-shadow-lg text-white">
+                            class="shadow-sm drop-shadow-lg text-[#000]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -109,7 +109,7 @@
                                 <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
                             </svg>
                         </a></li>
-                    <li><a href="https://t.me/biblesocietyincambodia" class="shadow-sm drop-shadow-lg text-white">
+                    <li><a href="https://t.me/biblesocietyincambodia" class="shadow-sm drop-shadow-lg text-[#000]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -119,7 +119,7 @@
                             </svg>
                         </a></li>
                     <li><a href="https://www.pinterest.com/biblesocietyincambodia"
-                            class="shadow-sm drop-shadow-lg text-white">
+                            class="shadow-sm drop-shadow-lg text-[#000]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -138,7 +138,7 @@
             <li class="space-y-[1rem] list-none py-5 xl:py-0">
                 <h1 class="text-[20px] text-[#000] text-start font-semibold my-1">{{ __('messages.information') }}
                 </h1>
-                <ul class="space-y-[1rem] text-[#fff]">
+                <ul class="space-y-[1rem] text-[#000]">
                     <li>
                         <p>www.biblecambodia.org</p>
                         <p>Email: info@biblecambodia.org</p>
@@ -147,10 +147,10 @@
                         <p class="text-[16px] font-semibold">{{ __('messages.siem_reap') }}</p>
                         <p>{{ __('messages.sr_address') }}</p>
                     </li>
-                    <li>
+                    {{-- <li>
                         <p class="text-[16px] font-semibold">{{ __('messages.Bible_Distribution_Center') }}</p>
                         <p>{{ __('messages.bdc_address') }}</p>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
 

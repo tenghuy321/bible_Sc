@@ -21,6 +21,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -52,6 +54,21 @@
             font-size: 18px;
         }
 
+        .swiper .swiper-pagination-bullet {
+            background-color: #000;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+
+        .swiper .swiper-pagination .swiper-pagination-bullet-active {
+            width: 10px;
+            height: 4px;
+            border-radius: 10px;
+            background-color: #000;
+        }
+
         @media (max-width: 639px) {
 
             .prose strong {
@@ -69,11 +86,12 @@
             }
         }
     </style>
+    @yield('css')
 </head>
 
 <body class="{{ app()->getLocale() === 'km' ? 'font-kantumruy' : 'font-inter' }}">
 
-    @include('components.navbar')
+    @include('components.navbar', ['versions_item' => $versions_item])
 
     @yield('content')
 
@@ -81,12 +99,25 @@
 
     @yield('js')
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- <script src="https://checkout.payway.com.kh/plugins/checkout2-0.js"></script> --}}
 
     <script>
-        AOS.init();
+        AOS.init({
+            offset: 10,
+        });
+
+        var missionSwiper = new Swiper(".MissionSwiper", {
+            loop: true,
+            autoplay: {
+                delay: 2000,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        });
     </script>
 </body>
 

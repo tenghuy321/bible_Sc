@@ -20,7 +20,10 @@ use App\Http\Controllers\Admin\CatalogueBookController;
 use App\Http\Controllers\Frontend\CataloguesController;
 use App\Http\Controllers\Admin\VersionBackendController;
 use App\Http\Controllers\Admin\CataloguesBackendController;
-
+use App\Http\Controllers\Admin\MissionBackendController;
+use App\Http\Controllers\Admin\NewsBackendController;
+use App\Http\Controllers\Frontend\NewsController;
+use App\Http\Controllers\Frontend\NewsDetailController;
 
 Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('lang.switch');
 Route::get('/cata', [CataloguesController::class, 'index'])->name('cata');
@@ -28,6 +31,8 @@ Route::get('/cata', [CataloguesController::class, 'index'])->name('cata');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/mission', [MissionController::class, 'index'])->name('mission');
+Route::get('/news_item', [NewsController::class, 'index'])->name('news_item');
+Route::get('/news_item/{id}', [NewsDetailController::class, 'show'])->name('more_details');
 
 Route::post('/send-order', [TelegramController::class, 'sendOrder'])->name('telegram.sendOrder');
 Route::get('/vlogs', [VlogsController::class, 'index'])->name('vlogs');
@@ -59,6 +64,12 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('chapter', ChapterController::class)->parameters(['chapter' => 'chapter'])->except(['destroy', 'show']);
     Route::get('chapter/delete/{chapter}', [ChapterController::class, 'delete'])->name('chapter.delete');
+
+    Route::resource('mission_backend', MissionBackendController::class)->except(['destroy', 'show']);
+    Route::get('mission_backend/delete/{mission_backend}', [MissionBackendController::class, 'delete'])->name('mission_backend.delete');
+
+    Route::resource('news_backend', NewsBackendController::class)->except(['destroy', 'show']);
+    Route::get('news_backend/delete/{news_backend}', [NewsBackendController::class, 'delete'])->name('news_backend.delete');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
