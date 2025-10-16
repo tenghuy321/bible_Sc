@@ -102,7 +102,7 @@ return [
     "information"=>"Information",
     "follow_us"=>"Follow Us",
     "bsf"=>"Bible Society Office",
-    "address"=>"34, Street 104P6,  Phnom Penh Thmey, Khan Sen Sok Phnom Penh",
+    "address"=>"34, Street 104P6, Phnom Penh Thmey, Khan Sen Sok, Phnom Penh 120806",
     "office_hour"=>"Office Hours",
     "date_1"=>"MON - FRI : 08:00 - 16:30",
     "date_2"=>"Saturday: by appointment only",

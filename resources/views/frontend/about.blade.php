@@ -35,7 +35,7 @@
 
     <div
         class="w-full max-w-[420px] md:max-w-[720px] xl:max-w-[1200px] mx-auto h-full translate-y-[-15%] xl:translate-y-[-30%] shadow-sm drop-shadow-md">
-        <div class="w-full h-full md:h-[36vh] xl:h-[60vh] 2xl:h-[50vh] flex flex-col md:flex-row overflow-hidden">
+        <div class="w-full h-full md:h-[45vh] lg:h-[50vh] xl:h-[60vh] 2xl:h-[50vh] flex flex-col md:flex-row overflow-hidden">
             <div class="w-full md:w-[50%] h-[25vh] md:h-full">
                 <img src="{{ asset('assets/images/Banners/about_1.png') }}" alt="banner"
                     class="w-full h-full object-cover object-center max-sm:rounded-t-[30px] md:rounded-l-[30px]" />
@@ -45,7 +45,7 @@
                 <h1 class="text-[16px] md:text-[18px] xl:text-[24px] text-[#000000] font-[700] text-wrap">
                     {{ __('messages.about_us_title') }}
                 </h1>
-                <p class="text-[12px] md:text-[16px]">
+                <p class="text-[12px] md:text-[14px] xl:text-[16px]">
                     {{ __('messages.about_us_content') }}
                 </p>
             </div>
@@ -245,7 +245,7 @@
         </ul>
     </div>
 
-    <div class="w-full h-[250px] md:h-[400px] xl:h-[1024px] 2xl:bg-fixed bg-center bg-cover"
+    <div class="w-full h-[250px] md:h-[400px] xl:h-[1024px] bg-center bg-cover"
         style="background-image: url('{{ asset('assets/images/Banners/about_4.png') }}');">
     </div>
 
@@ -259,7 +259,7 @@
         </p>
     </div>
 
-    <div class="w-full h-[250px] md:h-[400px] xl:h-[1024px] 2xl:bg-fixed bg-center bg-cover"
+    <div class="w-full h-[250px] md:h-[400px] xl:h-[1024px] bg-center bg-cover"
         style="background-image: url('{{ asset('assets/images/Banners/about_3.png') }}');">
     </div>
 @endsection

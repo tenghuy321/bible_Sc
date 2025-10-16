@@ -67,7 +67,7 @@
 
     <div class="w-full h-fit bg-[linear-gradient(85.15deg,_rgba(30,_30,_30,_0.8)_0.43%,_rgba(7,_32,_39,_0.64)_98.29%)]">
         <div
-            class="w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto h-full -translate-y-[20%] md:-translate-y-[28%]">
+            class="w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto h-full -translate-y-[8%] md:-translate-y-[28%]">
             <div
                 class="w-full h-fit md:h-[35vh] lg:h-[50vh] 2xl:h-[40vh] flex flex-col md:flex-row pb-5 overflow-hidden">
                 <div class="w-full max-sm:h-[32vh] md:w-[40%] md:h-full">
