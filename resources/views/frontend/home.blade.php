@@ -257,7 +257,7 @@
 
                             <div
                                 class="mt-2 inline-block px-4 py-1.5 bg-white text-black text-[13px] rounded-full font-medium hover:bg-[#4FC9EE] hover:text-white transition-all duration-300">
-                                <a href="{{ route('mission') }}">
+                                <a href="{{ route('mission') }}#mission">
                                     {{ app()->getLocale() === 'km' ? 'បេសកកម្មផ្សេងៗ' : 'More Mission' }}
                                 </a>
                             </div>
@@ -302,7 +302,7 @@
 
                                 <div
                                     class="mt-2 inline-block px-4 py-1.5 bg-white text-black text-[13px] rounded-full font-medium hover:bg-[#4FC9EE] hover:text-white transition-all duration-300">
-                                    <a href="{{ route('news_item') }}">
+                                    <a href="{{ route('news_item') }}#news">
                                         {{ app()->getLocale() === 'km' ? 'ព័ត៌មានផ្សេងៗ' : 'More News' }}
                                     </a>
                                 </div>

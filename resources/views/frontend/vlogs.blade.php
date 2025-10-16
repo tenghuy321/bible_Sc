@@ -16,7 +16,7 @@
         </div>
     </section>
 
-    <div class="w-full h-fit">
+    <section class="w-full h-fit">
         <x-vlogs-card :vlogs="$vlogs" :locale="app()->getLocale()" />
-    </div>
+    </section>
 @endsection

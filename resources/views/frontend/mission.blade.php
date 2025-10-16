@@ -94,7 +94,7 @@
             </div>
         </div> --}}
 
-        <div class="w-full max-w-7xl mx-auto px-4 pb-4 pt-10 md:py-10">
+        <section id="mission" class="w-full max-w-7xl mx-auto px-4 pb-4 pt-10 md:py-10">
 
             @forelse ($missions as $index => $mission)
                 @php
@@ -163,7 +163,7 @@
                     <p>No projects found</p>
                 </div>
             @endforelse
-        </div>
+        </section>
     </div>
 
     {{-- <div class="w-full h-fit bg-[#446EB6] overflow-hidden">

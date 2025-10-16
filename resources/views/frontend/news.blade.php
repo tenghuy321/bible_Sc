@@ -44,7 +44,7 @@
         </div>
     </div> --}}
 
-    <div class="w-full max-w-7xl mx-auto px-4 py-4 md:py-10">
+    <section id="news" class="w-full max-w-7xl mx-auto px-4 py-4 md:py-10">
         <div class="mb-10">
             <h1 class="text-gradient text-[20px] md:text-[25px] font-[600] max-w-[250px] md:max-w-full">{{ app()->getLocale() === 'km' ? 'ព័ត៌មាន' : 'News' }}</h1>
             <hr class="w-full h-[2px] bg-[#000]">
@@ -88,5 +88,5 @@
                 </div>
             @endforeach
         </div>
-    </div>
+    </section>
 @endsection
