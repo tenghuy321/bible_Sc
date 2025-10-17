@@ -61,17 +61,15 @@
                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
 
                     <div
-                        class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/40 to-transparent transition-all duration-500 p-4">
+                        class="absolute inset-0 flex flex-col justify-end group-hover:bg-[#000]/50 p-4">
 
-                        {{-- Always visible title --}}
                         <h1
                             class="text-white text-[16px] md:text-[18px] font-semibold drop-shadow-md mb-2 transition-all duration-300">
                             {{ app()->getLocale() === 'km' ? $item->title_kh : $item->title_en }}
                         </h1>
 
-                        {{-- Hidden content on hover --}}
                         <div
-                            class="max-h-0 overflow-hidden opacity-0 group-hover:max-h-[100px] group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                            class="max-h-0 overflow-hidden opacity-0 group-hover:max-h-[100px] group-hover:opacity-100 transition-all duration-500 ease-in-out rounded">
                             <div
                                 class="text-[13px] text-white line-clamp-2 prose prose-p:text-white prose-li:m-0 prose-strong:text-white">
                                 {!! app()->getLocale() === 'km' ? $item->content_kh : $item->content_en !!}
