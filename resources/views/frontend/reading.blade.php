@@ -12,7 +12,7 @@
     }
 @endphp
 
-    <section class="w-full h-[15vh] md:h-[30vh] flex items-center justify-center overflow-hidden bg-[#fff] md:bg-[#000]">
+    <section class="w-full h-[15vh] md:h-[15vh] xl:h-[30vh] flex items-center justify-center overflow-hidden bg-[#000]">
     </section>
 
 <div class="w-full max-w-7xl mx-auto px-2 py-10" x-data="{

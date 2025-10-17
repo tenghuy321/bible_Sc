@@ -10,8 +10,8 @@ return [
     "vlogs" => "Vlogs",
 
     "welcome" => "The Bible Society in Cambodia.",
-    "bible" => "Bible for",
-    "everyone" => "Everyone",
+    "bible" => "Bible",
+    "everyone" => "For Everyone",
     "title-1" => "Welcome to",
 
     "quote" => "GOD’S WORD Living Hope for All.",
