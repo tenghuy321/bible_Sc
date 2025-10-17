@@ -1,6 +1,22 @@
 @extends('layouts.master')
 @section('css')
     <style>
+        .prose strong {
+            font-size: 16px;
+            color: #4FC9EE;
+        }
+
+        .prose p, .prose ul {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .prose ol {
+            list-style-type: decimal;
+            font-size: 16px;
+            color: #fff;
+        }
+
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
@@ -12,6 +28,23 @@
 
         .custom-scrollbar::-webkit-scrollbar-track {
             background-color: #2a2a2a;
+        }
+
+        @media (max-width: 768px) {
+            .prose strong {
+                font-size: 14px;
+                color: #4FC9EE;
+            }
+            .prose ol {
+                list-style-type: decimal;
+                font-size: 14px;
+                color: #fff;
+            }
+            .prose p, .prose ul {
+                font-size: 14px;
+                color: #fff;
+            }
+
         }
     </style>
 @endsection
@@ -125,13 +158,12 @@
                             {{ app()->getLocale() === 'km' ? $mission->title_kh : $mission->title_en }}
                         </h1>
 
-                        <div class="text-[12px] md:text-[18px] text-pretty text-[#fff] line-clamp-4">
+                        <div class="text-pretty prose line-clamp-4 mt-4">
                             {!! app()->getLocale() === 'km' ? $mission->content_kh : $mission->content_en !!}
                         </div>
 
                         <button @click="open = true"
                             class="mt-2 text-sm text-[#4FC9EE] underline hover:text-[#38bdf8] transition absolute right-0 bottom-0">
-                            {{-- Read Details --}}
                             {{ $locale === 'km' ? 'ព័ត៌មានបន្ថែម' : 'Read More' }}
                         </button>
 
@@ -139,18 +171,14 @@
                             class="fixed inset-0 flex items-center justify-center z-50">
                             <div @click.away="open = false"
                                 class="bg-[#1E1E1E] rounded-2xl max-w-2xl w-[90%] p-6 text-white relative">
-                                {{-- Close button --}}
                                 <button @click="open = false"
                                     class="absolute top-2 right-3 text-gray-400 hover:text-white text-xl">&times;</button>
 
-                                {{-- Title --}}
                                 <h2 class="text-[18px] md:text-[24px] text-[#4FC9EE] font-bold mb-3 pr-6">
                                     {{ app()->getLocale() === 'km' ? $mission->title_kh : $mission->title_en }}
                                 </h2>
 
-                                {{-- Scrollable Content --}}
-                                <div
-                                    class="text-[14px] md:text-[18px] text-pretty max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                                <div class="text-pretty prose max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar mt-4">
                                     {!! app()->getLocale() === 'km' ? $mission->content_kh : $mission->content_en !!}
                                 </div>
                             </div>

@@ -104,7 +104,8 @@
                 toolbar: [
                     'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
                     'undo', 'redo', 'code', 'codeBlock'
-                ]
+                ],
+                removePlugins: ['Heading']
             })
             .catch(error => {
                 console.error(error);
@@ -115,7 +116,8 @@
                 toolbar: [
                     'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
                     'undo', 'redo', 'code', 'codeBlock'
-                ]
+                ],
+                removePlugins: ['Heading']
             })
             .catch(error => {
                 console.error(error);
