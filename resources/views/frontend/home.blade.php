@@ -330,7 +330,7 @@
                     onclick="openVideoModal('{{ $videoId }}')">
                     <div class="absolute left-0 top-4 bg-[#4FC9EE] px-4 py-1 z-10">
                         <h1 class="text-gradient text-[16px] md:text-[20px] font-[600] max-w-[250px] md:max-w-full">
-                            {{ app()->getLocale() === 'km' ? 'វិដេអូ' : 'Vlog' }}
+                            {{ app()->getLocale() === 'km' ? 'វីដេអូ' : 'Vlog' }}
                         </h1>
                     </div>
 
