@@ -4,11 +4,11 @@
 @section('content')
     @include('components.loading')
 
-    <section class="w-full h-[60vh] md:h-screen flex items-center justify-center overflow-hidden"
+    <section class="w-full h-[60vh] md:h-screen big-hight flex items-center justify-center overflow-hidden"
         style="background-image: url('{{ asset('assets/images/Banners/banner.jpg') }}'); background-size: cover; background-position: center;">
         <div class="w-full max-w-7xl mx-auto text-center">
             <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
-                <p class="text-[20px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.bible') }}</p>
+                {{-- <p class="text-[20px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.bible') }}</p> --}}
                 <h1 class="text-[30px] md:text-[50px] xl:text-[5rem] font-[600] leading-none">
                     {{ __('messages.everyone') }}
                 </h1>
@@ -67,9 +67,8 @@
 
     <div class="w-full h-fit bg-[linear-gradient(85.15deg,_rgba(30,_30,_30,_0.8)_0.43%,_rgba(7,_32,_39,_0.64)_98.29%)]">
         <div
-            class="w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto h-full -translate-y-[8%] md:-translate-y-[28%]">
-            <div
-                class="w-full h-fit md:h-[35vh] lg:h-[50vh] 2xl:h-[40vh] flex flex-col md:flex-row pb-5 overflow-hidden">
+            class="w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto h-full -translate-y-[8%] md:-translate-y-[28%] lg:-translate-y-[26%] move-up">
+            <div class="w-full h-fit md:h-[35vh] lg:h-[50vh] 2xl:h-[40vh] flex flex-col md:flex-row pb-5 overflow-hidden">
                 <div class="w-full max-sm:h-[32vh] md:w-[40%] md:h-full">
                     <img src="{{ asset('assets/images/Banners/banner_1.png') }}" alt="banner" data-aos="fade-right"
                         data-aos-duration="400"

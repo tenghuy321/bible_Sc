@@ -68,7 +68,7 @@
                     @foreach ($routes as $route)
                         <a href="{{ route($route['name']) }}"
                             class="relative inline-block text-[14px] font-semibold whitespace-nowrap
-                    {{ request()->routeIs($route['name']) ? 'text-[#fff]' : 'text-[#000]' }}">
+                    {{ request()->routeIs($route['name']) ? 'text-[#000]' : 'text-[#000]' }}">
                             {{ __($route['label']) }}
                         </a>
                     @endforeach

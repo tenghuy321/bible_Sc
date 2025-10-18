@@ -53,7 +53,7 @@
     @php
         $locale = app()->getLocale();
     @endphp
-    <div class="w-full h-[60vh] md:h-screen bg-gray-100 flex items-center justify-center overflow-hidden"
+    <div class="w-full h-[60vh] md:h-screen big-hight bg-gray-100 flex items-center justify-center overflow-hidden"
         style="background-image: url('{{ asset('assets/images/Banners/ms_banner.png') }}'); background-size: cover; background-position: center;">
         <div
             class="relative flex justify-between items-center max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] md:space-x-[8rem] xl:space-x-[14rem]">

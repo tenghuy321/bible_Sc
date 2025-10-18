@@ -16,7 +16,7 @@
             <p class="text-[#fff] text-[14px] xl:text-[24px] font-[400]">{{ __('messages.quote') }}</p>
         </div>
     </div> --}}
-    <section class="w-full h-[60vh] md:h-screen flex items-center justify-center overflow-hidden"
+    <section class="w-full h-[60vh] md:h-screen big-hight flex items-center justify-center overflow-hidden"
         style="background-image: url('{{ asset('assets/images/Banners/cata_banner.png') }}'); background-size: cover; background-position: center;">
         <div class="flex items-center justify-between gap-2 w-full max-w-7xl mx-auto px-4 md:px-20 ">
             <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">

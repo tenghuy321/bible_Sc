@@ -68,13 +68,23 @@
             background-color: #000;
         }
 
+        @media (min-width: 1700px) {
+            .big-hight {
+                height: 60vh;
+            }
+
+            .move-up {
+                transform: translateY(-10%);
+            }
+        }
+
         @media (max-width: 639px) {
 
             .prose strong {
                 font-size: 16px;
             }
 
-            .prose p span{
+            .prose p span {
                 font-size: 14px;
             }
 
