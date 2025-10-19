@@ -60,7 +60,7 @@
                             ['name' => 'about', 'label' => 'messages.about'],
                             ['name' => 'mission', 'label' => 'messages.mission'],
                             ['name' => 'cata', 'label' => 'messages.catalogues'],
-                            ['name' => 'news_item', 'label' => 'messages.news'],
+                            // ['name' => 'news_item', 'label' => 'messages.news'],
                             ['name' => 'vlogs', 'label' => 'messages.vlogs'],
                         ];
                     @endphp

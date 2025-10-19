@@ -21,7 +21,7 @@
         </div>
     </section>
 
-    <div class="max-w-7xl mx-auto py-10 px-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <section id="news_items" class="max-w-7xl mx-auto py-10 px-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         @php
             $images = json_decode($news->image, true) ?? [];
         @endphp
@@ -106,5 +106,5 @@
             </div>
         </div>
 
-    </div>
+    </section>
 @endsection

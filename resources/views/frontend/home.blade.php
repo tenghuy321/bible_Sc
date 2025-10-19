@@ -301,7 +301,7 @@
 
                                 <div
                                     class="mt-2 inline-block px-4 py-1.5 bg-white text-black text-[13px] rounded-full font-medium hover:bg-[#4FC9EE] hover:text-white transition-all duration-300">
-                                    <a href="{{ route('news_item') }}#news">
+                                    <a href="{{ route('vlogs') }}#news">
                                         {{ app()->getLocale() === 'km' ? 'ព័ត៌មានផ្សេងៗ' : 'More News' }}
                                     </a>
                                 </div>

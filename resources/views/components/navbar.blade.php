@@ -71,7 +71,7 @@
                         ['name' => 'about', 'label' => 'messages.about'],
                         ['name' => 'mission', 'label' => 'messages.mission'],
                         ['name' => 'cata', 'label' => 'messages.catalogues'],
-                        ['name' => 'news_item', 'label' => 'messages.news'],
+                        // ['name' => 'news_item', 'label' => 'messages.news'],
                         ['name' => 'vlogs', 'label' => 'messages.vlogs'],
                     ];
                 @endphp
@@ -172,13 +172,13 @@
                     hover:before:scale-x-100 hover:before:origin-bottom-left before:transition-all before:duration-300">
                 {{ __('messages.catalogues') }}
             </a>
-            <a href="{{ route('news_item') }}"
-                class="relative text-[20px] {{ request()->routeIs('news_item') ? 'text-[#32CDF0] before:scale-x-100' : 'text-[#000]' }}
-                    before:absolute before:-bottom-9 before:w-full before:h-[4px] before:bg-[#32CDF0]
-                    before:rounded-full before:scale-x-0 before:origin-bottom-right
-                    hover:before:scale-x-100 hover:before:origin-bottom-left before:transition-all before:duration-300">
-                {{ __('messages.news') }}
-            </a>
+                {{-- <a href="{{ route('news_item') }}"
+                    class="relative text-[20px] {{ request()->routeIs('news_item') ? 'text-[#32CDF0] before:scale-x-100' : 'text-[#000]' }}
+                        before:absolute before:-bottom-9 before:w-full before:h-[4px] before:bg-[#32CDF0]
+                        before:rounded-full before:scale-x-0 before:origin-bottom-right
+                        hover:before:scale-x-100 hover:before:origin-bottom-left before:transition-all before:duration-300">
+                    {{ __('messages.news') }}
+                </a> --}}
             <a href="{{ route('vlogs') }}"
                 class="relative text-[20px] {{ request()->routeIs('vlogs') ? 'text-[#32CDF0] before:scale-x-100' : 'text-[#000]' }}
                     before:absolute before:-bottom-9 before:w-full before:h-[4px] before:bg-[#32CDF0]

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\News;
 use App\Models\Vlog;
 use App\Models\Version;
 use Illuminate\Http\Request;
@@ -12,10 +13,12 @@ class VlogsController extends Controller
     public function index()
     {
         $vlogs = Vlog::get();
+        $news = News::get();
         $versions_item = Version::where('slug', '=', 'khmer-standard-version-khsv')->first();
 
         return view('frontend.vlogs', [
             'vlogs' => $vlogs,
+            'news' => $news,
             'versions_item' => $versions_item,
             'locale' => app()->getLocale(),
         ]);
