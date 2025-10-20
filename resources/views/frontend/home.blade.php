@@ -106,7 +106,7 @@
 
         {{-- Second Section --}}
         <div
-            class="flex flex-col md:flex-row w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto gap-4 pb-10 xl:pb-10 md:-translate-y-[30%] lg:-translate-y-[20%] xl:translate-y-[4%] overflow-hidden">
+            class="flex flex-col md:flex-row w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto gap-4 pb-10 xl:pb-10 md:-translate-y-[30%] lg:-translate-y-[20%] xl:translate-y-[3%] overflow-hidden">
 
             <div class="max-sm:-translate-y-[40%] xl:w-[30%] overflow-hidden">
                 <h1 data-aos="fade-right" data-aos-duration="200"
