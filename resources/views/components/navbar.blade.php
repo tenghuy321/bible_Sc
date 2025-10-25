@@ -20,12 +20,12 @@
 
             <!-- Language links -->
             <a href="{{ route('lang.switch', 'km') }}"
-                class="{{ $locale === 'km' ? 'text-[#4FC9EE] font-bold' : 'text-[#fff]' }}">
+                class="{{ $locale === 'km' ? 'text-[#4FC9EE] font-bold' : 'text-[#96e2f9]' }}">
                 {{ $locale === 'km' ? 'ភាសាខ្មែរ' : 'Khmer' }}
             </a>
 
             <a href="{{ route('lang.switch', 'en') }}"
-                class="{{ $locale === 'en' ? 'text-[#4FC9EE] font-bold' : 'text-[#fff]' }}">
+                class="{{ $locale === 'en' ? 'text-[#4FC9EE] font-bold' : 'text-[#96e2f9]' }}">
                 {{ $locale === 'km' ? 'ភាសាអង់គ្លេស' : 'English' }}
             </a>
         </div>
@@ -99,18 +99,18 @@
 
         <!-- Language links -->
         <a href="{{ route('lang.switch', 'km') }}"
-            class="{{ $locale === 'km' ? 'text-[#4FC9EE] font-bold' : 'text-[#fff]' }}">
+            class="{{ $locale === 'km' ? 'text-[#4FC9EE] font-bold' : 'text-[#96e2f9]' }}">
             {{ $locale === 'km' ? 'ភាសាខ្មែរ' : 'Khmer' }}
         </a>
 
         <a href="{{ route('lang.switch', 'en') }}"
-            class="{{ $locale === 'en' ? 'text-[#4FC9EE] font-bold' : 'text-[#fff]' }}">
+            class="{{ $locale === 'en' ? 'text-[#4FC9EE] font-bold' : 'text-[#96e2f9]' }}">
             {{ $locale === 'km' ? 'ភាសាអង់គ្លេស' : 'English' }}
         </a>
     </div>
 
     <div
-        class="hidden xl:flex items-center justify-between border-b border-gray-900/10 py-6 lg:border-none h-[5rem] px-10 bg-[#fff] rounded-full">
+        class="hidden xl:flex items-center justify-between border-b border-gray-900/10 py-6 lg:border-none h-[5rem] px-10 bg-[#fff] drop-shadow-2xl rounded-full">
         <div class="flex flex-1 items-center gap-4" data-aos="fade-right" data-aos-duration="1000">
             <img src="{{ asset('assets/images/logo.svg') }}" alt="">
             <a href="{{ url('/#home') }}" class="flex items-center gap-6 bg-[#50bbed] ps-6 pe-2 py-1 rounded-full">
