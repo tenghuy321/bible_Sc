@@ -20,7 +20,7 @@
             <table class="min-w-full table-fixed">
                 <thead class="text-[#fff] sticky top-0 z-10 bg-[#4FC9EE] border border-[#4FC9EE]">
                     <tr>
-                        <th class="text-left py-3 px-4 text-xs w-[200px] border-r border-[#fff]">Image</th>
+                        {{-- <th class="text-left py-3 px-4 text-xs w-[200px] border-r border-[#fff]">Image</th> --}}
                         <th class="text-left py-3 px-4 text-xs w-[200px] border-r border-[#fff]">Name</th>
                         <th class="text-left py-3 px-4 text-xs w-[50px]">Actions</th>
                     </tr>
@@ -29,9 +29,9 @@
                     @foreach ($catalogues as $catalogue)
                         <tr class="border border-[#4FC9EE]">
 
-                            <td class="py-1 px-4 text-xs max-w-[200px] border-r border-[#4FC9EE]">
+                            {{-- <td class="py-1 px-4 text-xs max-w-[200px] border-r border-[#4FC9EE]">
                                 <img src="{{ asset($catalogue->image) }}" alt="" class="w-12 h-12">
-                            </td>
+                            </td> --}}
 
                             <td class="py-4 px-4 text-xs max-w-[200px] border-r border-[#4FC9EE]">
                                 <div class="flex flex-col truncate">

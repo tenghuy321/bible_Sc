@@ -43,9 +43,10 @@ class CataloguesBackendController extends Controller
             ->with('success', 'Created successfully.');
     }
 
-    public function edit(Catalogues $catalogues)
+    public function edit(Request $request, Catalogues $catalogues)
     {
-        return view('admin.catalogues.edit', compact('catalogues'));
+        $page = $request->query('page', 1);
+        return view('admin.catalogues.edit', compact('catalogues', 'page'));
     }
 
     public function update(Request $request, Catalogues $catalogues)
@@ -70,19 +71,25 @@ class CataloguesBackendController extends Controller
 
         $catalogues->update($data);
 
-        return redirect()->route('catalogues-backend.index')
+        // Preserve current pagination page
+        $page = $request->query('page', 1);
+
+        return redirect()
+            ->route('catalogues-backend.index', ['page' => $page])
             ->with('success', 'Updated successfully.');
     }
 
-    public function delete(Catalogues $catalogues)
+
+    public function delete(Catalogues $catalogues, Request $request)
     {
         if ($catalogues->image && Storage::disk('custom')->exists($catalogues->image)) {
             Storage::disk('custom')->delete($catalogues->image);
         }
 
         $catalogues->delete();
+        $page = $request->query('page', 1);
 
-        return redirect()->route('catalogues-backend.index')
+        return redirect()->route('catalogues-backend.index', ['page' => $page])
             ->with('success', 'Deleted successfully.');
     }
 }

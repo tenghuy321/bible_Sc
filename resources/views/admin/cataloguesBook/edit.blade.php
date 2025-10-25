@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto shadow-md rounded-lg p-6 my-2">
         <h2 class="text-2xl font-bold text-[#401457]">Edit Catalogue Book</h2>
-        <form action="{{ route('catabook-backend.update', $catabook->id) }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('catabook-backend.update', ['catabook' => $catabook->id, 'page' => request('page')]) }}" method="POST" enctype="multipart/form-data"
             class="space-y-4">
             @csrf
             @method('PATCH')

@@ -181,10 +181,10 @@
             <div x-show="open && mode==='details'"
                 class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-2" x-cloak>
                 <div @click.away="closeModal()"
-                    class="relative bg-white rounded-[30px] p-20 max-w-5xl mx-auto w-full flex items-center gap-[1rem]">
+                    class="relative bg-white rounded-[30px] px-4 py-12 md:px-4 md:py-10 lg:p-20 max-w-5xl mx-auto w-full flex flex-col md:flex-row items-center gap-[1rem]">
 
                     <!-- Book Images -->
-                    <div class="w-[48%] mb-4">
+                    <div class="w-full md:w-[48%] mb-4">
                         <template x-if="selectedBook.images.length > 0">
                             <div class="swiper MissionSwiper w-full h-full">
                                 <div class="swiper-wrapper w-full h-full">
@@ -205,7 +205,7 @@
                     </div>
 
                     <!-- Book Details -->
-                    <div class="w-[48%] text-[16px] md:text-[18px] text-[#000] px-10">
+                    <div class="w-full md:w-[48%] text-[16px] md:text-[18px] text-[#000] px-10">
                         <h2 class="text-[20px] md:text-[25px] lg:text-[30px] text-[#4FC9EE] mb-4">
                             {{ $locale === 'km' ? 'ព័ត៌មានលម្អិត' : 'Details' }}</h2>
                         <p>{{ $locale === 'km' ? 'ឈ្មោះ' : 'Name' }}: <span class="font-light"
@@ -221,7 +221,7 @@
 
                     </div>
 
-                    <div class="absolute top-4 right-4">
+                    <div class="absolute top-2 md:top-4 right-2 md:right-4">
                         <button @click="closeModal()">
                             <svg width="43" height="43" viewBox="0 0 43 43" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">

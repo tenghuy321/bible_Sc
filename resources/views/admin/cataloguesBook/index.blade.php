@@ -17,7 +17,6 @@
             <table class="min-w-full border border-gray-200">
                 <thead class="bg-[#4FC9EE] border border-[#4FC9EE] text-white">
                     <tr>
-                        {{-- <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">#</th> --}}
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Image</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Name</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Code</th>
