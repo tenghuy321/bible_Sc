@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div>
+            {{-- <div>
                 <h1 class="text-[#401457]">Image</h1>
                 <label for="dropzone-file{{ $catalogues->id }}" id="drop-area"
                     class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
@@ -40,7 +40,7 @@
                         accept="image/*" onchange="uploadImage(event)" />
                 </label>
                 <x-input-error class="mt-2" :messages="$errors->get('image')" />
-            </div>
+            </div> --}}
 
             <div class="flex justify-between">
                 <a href="{{ route('catalogues-backend.index') }}"
