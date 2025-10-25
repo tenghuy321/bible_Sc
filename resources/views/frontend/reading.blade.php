@@ -303,7 +303,7 @@ $spanIndex = 0;
             .then(() => { this.copied = true; setTimeout(() => this.copied = false, 1500); });
     },
 
-shareText() { const pageUrl = window.location.href; const shareContent = `${this.selectedText}\n\n${this.numberChapter}`; if (navigator.share) { navigator.share({ title: document.title, text: shareContent }).catch(() => {}); } else { navigator.clipboard.writeText(pageUrl) .then(() => { this.copied = true; setTimeout(() => this.copied = false, 1500); }); } },
+shareText() { const pageUrl = window.location.href; const shareContent = `${this.selectedText}\n\n${this.numberChapter}`; if (navigator.share) { navigator.share({ title: document.title, url: pageUrl }).catch(() => {}); } else { navigator.clipboard.writeText(pageUrl) .then(() => { this.copied = true; setTimeout(() => this.copied = false, 1500); }); } },
     closePopup() {
         this.showPopup = false;
         this.selectedSpan = null;
