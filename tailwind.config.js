@@ -14,6 +14,7 @@ export default {
             fontFamily: {
                 inter: ['Inter', 'sans-serif'],
                 kantumruy: ['"Kantumruy Pro"', 'sans-serif'],
+                caprasimo: ['"Caprasimo"', 'serif'],
             },
         },
     },
