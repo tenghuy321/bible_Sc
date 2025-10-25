@@ -303,32 +303,7 @@ $spanIndex = 0;
             .then(() => { this.copied = true; setTimeout(() => this.copied = false, 1500); });
     },
 
-shareText() {
-    const pageUrl = window.location.href;
-
-    const shareContent = `${this.selectedText}\n\n${this.numberChapter}\n${pageUrl}`;
-
-    if (navigator.share) {
-        navigator.share({
-            title: document.title,
-            text: shareContent,
-            {{-- url: pageUrl --}}
-        }).catch(() => {
-            navigator.clipboard.writeText(shareContent)
-                .then(() => {
-                    this.copied = true;
-                    setTimeout(() => this.copied = false, 1500);
-                });
-        });
-    } else {
-        navigator.clipboard.writeText(shareContent)
-            .then(() => {
-                this.copied = true;
-                setTimeout(() => this.copied = false, 1500);
-            });
-    }
-},
-
+shareText() { const pageUrl = window.location.href; if (navigator.share) { navigator.share({ title: document.title, url: pageUrl }).catch(() => {}); } else { navigator.clipboard.writeText(pageUrl) .then(() => { this.copied = true; setTimeout(() => this.copied = false, 1500); }); } },
     closePopup() {
         this.showPopup = false;
         this.selectedSpan = null;
