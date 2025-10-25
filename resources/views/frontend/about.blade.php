@@ -258,7 +258,7 @@
     </div>
 
 
-    <section class="relative w-full h-full z-10">
+    <section class="relative w-full h-full z-10 overflow-hidden">
         <div class="p-0 absolute inset-0 bg-[#D9D9D9] h-[400px] md:h-[400px] lg:h-[600px] z-1"></div>
         <div class="relative w-full h-fit max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto my-10">
             @foreach ($stuffs as $index => $stuff)
@@ -266,14 +266,14 @@
                     $images = json_decode($stuff->image, true) ?? [];
                 @endphp
 
-                <div class="text-center py-5 md:py-10">
+                <div class="text-center py-5 md:py-10" data-aos="fade-right" data-aos-duration="500">
                     <h1 class="text-[20px] md:text-[30px] xl:text-[40px] text-[#4FC9EE] font-bold">
                         {{ app()->getLocale() === 'km' ? $stuff->title_kh : $stuff->title_en }}</h1>
                     <div class="text-[14px] md:text-[16px] xl:text-[20px] text-[#000] px-0 md:px-20 py-5">
                         {!! app()->getLocale() === 'km' ? $stuff->content_kh : $stuff->content_en !!}</div>
                 </div>
 
-                <div class="w-full">
+                <div class="w-full" data-aos="fade-right" data-aos-duration="500">
                     <div class="swiper MissionSwiper w-full h-full">
                         <div class="swiper-wrapper w-full h-full">
                             @foreach ($images as $img)
@@ -291,21 +291,21 @@
     </section>
 
     <section class="px-4">
-        <div class="relative w-full h-full bg-[#D9D9D9] rounded-[30px] pb-10 ">
+        <div class="relative w-full h-full bg-[#D9D9D9] rounded-[30px] pb-10 overflow-hidden">
             <div class="relative w-full h-fit max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto my-10">
                 @foreach ($boards as $index => $board)
                     @php
                         $images = json_decode($board->image, true) ?? [];
                     @endphp
 
-                    <div class="text-center py-5 md:py-10">
+                    <div class="text-center py-5 md:py-10" data-aos="fade-right" data-aos-duration="500">
                         <h1 class="text-[20px] md:text-[30px] xl:text-[40px] text-[#4FC9EE] font-bold">
                             {{ app()->getLocale() === 'km' ? $board->title_kh : $board->title_en }}</h1>
                         <div class="text-[14px] md:text-[16px] xl:text-[20px] text-[#000] px-0 md:px-20 py-5">
                             {!! app()->getLocale() === 'km' ? $board->content_kh : $board->content_en !!}</div>
                     </div>
 
-                    <div class="w-full">
+                    <div class="w-full" data-aos="fade-right" data-aos-duration="500">
                         <div class="swiper MissionSwiper w-full h-full">
                             <div class="swiper-wrapper w-full h-full">
                                 @foreach ($images as $img)
@@ -332,12 +332,11 @@
             </h1>
         </div>
 
-        <div class="flex flex-wrap gap-[1rem] justify-center py-5">
+        <div class="flex flex-wrap gap-[1rem] justify-center py-5 overflow-hidden">
 
             {{-- Bible Distribution Center --}}
-            <div class="w-full lg:w-[48%]">
-                <h1 data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="500"
-                    data-aos-duration="500"
+            <div class="w-full lg:w-[48%]" data-aos="fade-right" data-aos-duration="500">
+                <h1 
                     class="font-bold text-center text-wrap text-[#50c9ee] {{ app()->getLocale() === 'km' ? 'font-krasar text-[20px]' : 'font-gotham text-[20px] leading-[20px]' }}">
                     {{ app()->getLocale() === 'km' ? "សមាគមព្រះគម្ពីរភ្នំពេញ" : "សមាគមព្រះគម្ពីរភ្នំពេញ" }}
                 </h1>
@@ -347,7 +346,7 @@
             </div>
 
             {{-- Siem Reap --}}
-            <div class="w-full lg:w-[48%]">
+            <div class="w-full lg:w-[48%]" data-aos="fade-left" data-aos-duration="500">
                 <h1 data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="500"
                     data-aos-duration="500"
                     class="font-bold text-center text-wrap text-[#50c9ee] {{ app()->getLocale() === 'km' ? 'font-krasar text-[20px]' : 'font-gotham text-[20px] leading-[20px]' }}">
