@@ -378,7 +378,7 @@
     <div class="w-full h-fit xl:max-w-[1200px] mx-auto my-[1.5rem] px-3 py-[2rem] overflow-hidden {{ app()->getLocale() === 'km' ? 'font-krasar' : 'font-gotham' }}">
         <div class="my-5">
             <h1 class="text-gradient text-[20px] md:text-[25px] font-[600] max-w-[250px] mb-2 md:max-w-full">
-                {{ app()->getLocale() === 'km' ? 'ប្រវិត្តិនៃការបកប្រែព្រះគម្ពីរជាភាសាខ្មែរ' : 'Khmer Bible Translation History' }}
+                {{ app()->getLocale() === 'km' ? 'ប្រវត្តិនៃការបកប្រែព្រះគម្ពីរជាភាសាខ្មែរ' : 'Khmer Bible Translation History' }}
             </h1>
             <hr class="w-full h-[2px] bg-[#000]">
         </div>

@@ -5,15 +5,15 @@
     @php
         $locale = app()->getLocale();
         $Experience = [
-            ['id' => 1, 'year' => 'messages.1804', 'content' => 'messages.1804_content'],
-            ['id' => 2, 'year' => 'messages.1892', 'content' => 'messages.1892_content'],
+            // ['id' => 1, 'year' => 'messages.1804', 'content' => 'messages.1804_content'],
+            ['id' => 1, 'year' => 'messages.1892', 'content' => 'messages.1892_content'],
+            ['id' => 2, 'year' => 'messages.1955', 'content' => 'messages.1955_content'],
             ['id' => 3, 'year' => 'messages.1899', 'content' => 'messages.1899_content'],
-            ['id' => 4, 'year' => 'messages.1923', 'content' => 'messages.1923_content'],
-            ['id' => 5, 'year' => 'messages.1954', 'content' => 'messages.1954_content'],
-            ['id' => 6, 'year' => 'messages.1955', 'content' => 'messages.1955_content'],
-            ['id' => 7, 'year' => 'messages.1962', 'content' => 'messages.1962_content'],
-            ['id' => 8, 'year' => 'messages.1968', 'content' => 'messages.1968_content'],
-            ['id' => 9, 'year' => 'messages.1975_1992', 'content' => 'messages.1975_1992_content'],
+            ['id' => 4, 'year' => 'messages.1962', 'content' => 'messages.1962_content'],
+            ['id' => 5, 'year' => 'messages.1923', 'content' => 'messages.1923_content'],
+            ['id' => 6, 'year' => 'messages.1968', 'content' => 'messages.1968_content'],
+            ['id' => 7, 'year' => 'messages.1954', 'content' => 'messages.1954_content'],
+            ['id' => 8, 'year' => 'messages.1975_1992', 'content' => 'messages.1975_1992_content'],
         ];
     @endphp
     <section class="w-full h-[60vh] lg:h-screen big-hight flex items-center justify-center overflow-hidden"
@@ -76,12 +76,11 @@
                                 {{ $item['id'] == 1 ? 'bg-[#EB5E38]' : '' }}
                                 {{ $item['id'] == 2 ? 'bg-[#53BE9E]' : '' }}
                                 {{ $item['id'] == 3 ? 'bg-[#38B6AF]' : '' }}
-                                {{ $item['id'] == 4 ? 'bg-[#2284E0]' : '' }}
-                                {{ $item['id'] == 5 ? 'bg-[#EA5454]' : '' }}
-                                {{ $item['id'] == 6 ? 'bg-[#53BE9E]' : '' }}
-                                {{ $item['id'] == 7 ? 'bg-[#EB5E38]' : '' }}
-                                {{ $item['id'] == 8 ? 'bg-[#38B6AF]' : '' }}
-                                {{ $item['id'] == 9 ? 'bg-[#E0C722]' : '' }}">
+                                {{ $item['id'] == 4 ? 'bg-[#EB5E38]' : '' }}
+                                {{ $item['id'] == 5 ? 'bg-[#2284E0]' : '' }}
+                                {{ $item['id'] == 6 ? 'bg-[#38B6AF]' : '' }}
+                                {{ $item['id'] == 7 ? 'bg-[#EA5454]' : '' }}
+                                {{ $item['id'] == 8 ? 'bg-[#E0C722]' : '' }}">
                                 {{ __($item['year']) }}</h1>
                         </div>
 
@@ -95,7 +94,7 @@
     </div>
 
     <div class="w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto py-10">
-        <hr class="w-full h-[2px] bg-[#000]">
+        <hr clfjlkfjlkfjass="w-full h-[2px] bg-[#000]">
     </div>
 
     <div class="w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto px-3 flex flex-wrap pb-10 overflow-hidden">
@@ -112,9 +111,9 @@
 
         <div data-aos="fade-left" data-aos-duration="500" class="w-full lg:w-[60%] xl:w-[70%]">
             <ul class="list-disc text-[#4FC9EE] text-[14px] md:text-[16px] xl:text-[20px]">
-                <li>{{ app()->getLocale() === 'km' ? 'ចង់ឃើញគ្រិស្តបរិស័ទទាំងអស់និងមនុស្សគ្រប់រូបមានព្រះគម្ពីរអានផ្ទាល់ខ្លួន ដែលជាភាសារបស់គេផ្ទាល់និងអាចជ្រើសរើសប្រភេទព្រះគម្ពីរបាន។' : 'To see all Christians and every person have their own Bible to read — in their own language and with the ability to choose the version they prefer.' }}
+                <li>{{ app()->getLocale() === 'km' ? 'ចង់ឃើញគ្រិស្តបរិស័ទទាំងអស់​ និងមនុស្សគ្រប់រូបមានព្រះគម្ពីរអានផ្ទាល់ខ្លួនដែលជាភាសារបស់គេផ្ទាល់​ និងអាចជ្រើសរើសប្រភេទព្រះគម្ពីរបាន។' : 'To see all Christians and every person have their own Bible to read — in their own language and with the ability to choose the version they prefer.' }}
                 </li>
-                <li>{{ app()->getLocale() === 'km' ? 'ចង់ឃើញគ្រិស្តបរិស័ទទាំងអស់ និងមនុស្សគ្រប់រូបទទួលបានការអប់រំផ្លូវចិត្ត ឱ្យចេះស្រឡាញ់ អត់ឱន អធ្យាស្រ័យគ្នាទៅវិញទៅមក និងរស់នៅក្នុងភាពសុខដុមរមនាជាមួយគ្នាតាមរយៈព្រះគម្ពីរដែលជាព្រះបន្ទូលរបស់ព្រះជាម្ចាស់នៃយើង។' : 'To see all Christians and every person receive spiritual education that teaches them to love, be patient, forgive one another, and live together in harmony — through the Bible, which is the Word of our God.' }}
+                <li>{{ app()->getLocale() === 'km' ? 'ចង់ឃើញគ្រិស្តបរិស័ទទាំងអស់ និងមនុស្សគ្រប់រូបទទួលបានការអប់រំផ្លូវចិត្ត​ ឱ្យចេះស្រឡាញ់ អត់ឱន អធ្យាស្រ័យគ្នាទៅវិញទៅមក និងរស់នៅក្នុងភាពសុខដុមរមនាជាមួយគ្នាតាមរយៈព្រះគម្ពីរដែលជាព្រះបន្ទូលរបស់ព្រះជាម្ចាស់នៃយើង។' : 'To see all Christians and every person receive spiritual education that teaches them to love, be patient, forgive one another, and live together in harmony — through the Bible, which is the Word of our God.' }}
                 </li>
                 <li>{{ app()->getLocale() === 'km' ? 'អនុវត្តតាមបេសកម្មដ៏ថ្លៃថ្លារបស់សមាគមព្រះគម្ពីរសកល និងធានានិរន្តភាពនៃបេសកកម្មរបស់សមាគមព្រះគម្ពីរដែលមាននៅព្រះរាជាណាចក្រកម្ពុជាចាប់តាំងពីឆ្នាំ១៨៩២។' : 'To carry out the noble mission of the United Bible Societies and ensure the continuity of the Bible Society’s mission in the Kingdom of Cambodia since 1892.' }}
                 </li>
@@ -336,7 +335,7 @@
 
             {{-- Bible Distribution Center --}}
             <div class="w-full lg:w-[48%]" data-aos="fade-right" data-aos-duration="500">
-                <h1 
+                <h1
                     class="font-bold text-center text-wrap text-[#50c9ee] {{ app()->getLocale() === 'km' ? 'font-krasar text-[20px]' : 'font-gotham text-[20px] leading-[20px]' }}">
                     {{ app()->getLocale() === 'km' ? "សមាគមព្រះគម្ពីរភ្នំពេញ" : "សមាគមព្រះគម្ពីរភ្នំពេញ" }}
                 </h1>
