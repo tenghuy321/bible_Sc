@@ -6,7 +6,6 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Bible | Dashboard</title>
-        <meta property="og:image" content="{{ asset('assets/images/logo.png') }}" />
         <link rel="icon" type="image/png" href="{{ asset('assets/images/logo.svg') }}">
 
         <!-- Fonts -->

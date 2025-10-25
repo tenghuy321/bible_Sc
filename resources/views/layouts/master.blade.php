@@ -7,8 +7,7 @@
     <meta name="author" content="PayWay">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:image" content="https://olive-tiger-871329.hostingersite.com/assets/images/logo.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <title>The Bible Society in Cambodia</title>
