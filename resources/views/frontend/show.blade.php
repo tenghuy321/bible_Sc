@@ -28,18 +28,21 @@
 
         <div
             class="w-full lg:col-span-2 relative pl-0 lg:pl-10 mt-4 md:mt-0 lg:before:content-[''] lg:before:absolute lg:before:right-0 before:top-0 lg:before:h-full lg:before:w-[2px] lg:before:bg-[#4FC9EE]">
-            <div>
-                <div class="columns-1 sm:columns-2 gap-4">
-                    @foreach ($images as $index => $img)
-                        <div class="break-inside-avoid overflow-hidden rounded-[5px] mb-0 md:mb-4 pr-0 md:pr-6">
-                            <img src="{{ asset($img) }}" alt="" loading="lazy"
-                                class="w-full h-[250px] mb-4 rounded-md object-cover" />
-                        </div>
-                    @endforeach
+            <div class="w-full pr-4">
+                <div class="swiper MissionSwiper w-full h-full">
+                    <div class="swiper-wrapper w-full h-full">
+                        @foreach ($images as $img)
+                            <div class="swiper-slide w-full h-full ">
+                                <img src="{{ asset($img) }}" alt="" loading="lazy"
+                                    class="w-full h-[250px] md:h-[400px] rounded-[10px] object-cover object-bottom">
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
 
-            <h1 class="text-[16px] md:text-[18px] font-[700]">
+            <h1 class="text-[16px] md:text-[18px] font-[700] pt-4">
                 {{ app()->getLocale() === 'km' ? $news->title_kh : $news->title_en }}
             </h1>
             <div class="text-[14px] prose prose-lg max-w-none mt-4 pr-0 md:pr-6">

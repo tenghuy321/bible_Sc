@@ -4,21 +4,8 @@
         $locale = app()->getLocale();
     @endphp
 
-    <section class="w-full h-[60vh] md:h-screen big-hight flex items-center justify-center overflow-hidden"
+    <section class="w-full h-[60vh] flex items-center justify-center overflow-hidden"
         style="background-image: url('{{ asset('assets/images/Banners/banner.jpg') }}'); background-size: cover; background-position: center;">
-        <div class="flex items-center justify-between gap-2 w-full max-w-7xl mx-auto px-4 md:px-20 ">
-            <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
-                <p class="text-[14px] md:text-[30px] text-[#4FC9EE] font-light font-kantumruy">{{ __('messages.title-1') }}
-                </p>
-                <h1 class="text-[20px] md:text-[50px] xl:text-[5rem] font-[600] leading-none">
-                    {!! nl2br(__('messages.welcome')) !!}
-                </h1>
-            </div>
-
-            <p data-aos="fade-left" data-aos-duration="1000"
-                class="w-full text-[14px] xl:text-[24px] text-[#ffffff] font-[400] flex justify-end">
-                {{ __('messages.quote') }}</p>
-        </div>
     </section>
 
     {{-- <div

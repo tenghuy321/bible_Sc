@@ -14,6 +14,8 @@ class Mission extends Model
         'title_kh',
         'content_en',
         'content_kh',
+        'description_kh',
+        'description_en',
         'image',
     ];
     protected $casts = [

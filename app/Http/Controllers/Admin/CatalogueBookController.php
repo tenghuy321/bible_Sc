@@ -15,11 +15,6 @@ class CatalogueBookController extends Controller
         $cata_books = CatalogueBook::join('catalogue', 'cataloguebook.catalogueId', 'catalogue.id')
             ->select('cataloguebook.*', 'catalogue.name_en as cname')
             ->paginate(10);
-        // $cata_books->getCollection()->transform(function ($item, $index) use ($cata_books) {
-        //     // Calculate the auto number based on the current page
-        //     $item->auto_number = $index + 1 + ($cata_books->currentPage() - 1) * $cata_books->perPage();
-        //     return $item;
-        // });
         return view('admin.cataloguesBook.index', compact('cata_books'));
     }
 
@@ -29,38 +24,55 @@ class CatalogueBookController extends Controller
         return view('admin.cataloguesBook.create', $data);
     }
 
+
     public function store(Request $request)
     {
-        $request->validate([
-            'name_en' => 'required',
-            'name_km' => 'required',
-            'type_en' => 'nullable',
-            'type_km' => 'required',
-            'size_en' => 'required',
-            'size_km' => 'required',
-            'code' => 'required',
-            'isbn' => 'required',
-            'catalogueId' => 'required',
-            'version' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
+        $validated = $request->validate([
+            'name_en' => 'required|string',
+            'name_km' => 'required|string',
+            'type_en' => 'nullable|string',
+            'type_km' => 'nullable|string',
+            'size_en' => 'nullable|string',
+            'size_km' => 'nullable|string',
+            'code' => 'nullable|string',
+            'isbn' => 'nullable|string',
+            'catalogueId' => 'nullable',
+            'version' => 'nullable|string',
+            'default_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+            'images' => 'nullable|array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
         ]);
 
-        $data = $request->except('_token', 'image');
-
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('catabooks', 'custom');
+        if ($request->hasFile('default_image')) {
+            $validated['default_image'] = $request->file('default_image')->store('catabooks', 'custom');
         }
 
-        $i = CatalogueBook::create($data);
+        $folderName = strtolower(str_replace(' ', '_', $validated['name_en']));
 
-        if ($i) {
-            return redirect()->route('catabook-backend.index')->with('success', 'Created successfully!');
-        } else {
-            return redirect()->route('catabook-backend.create')
-                ->with('error', 'Failed to created.')
-                ->withInput();
+        $imagePaths = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $imageFile) {
+                $path = $imageFile->store("catabooks/{$folderName}", 'custom');
+                $imagePaths[] = $path;
+            }
         }
+
+        $validated['images'] = json_encode($imagePaths);
+
+        $created = CatalogueBook::create($validated);
+
+        if ($created) {
+            return redirect()
+                ->route('catabook-backend.index')
+                ->with('success', 'Created successfully!');
+        }
+
+        return redirect()
+            ->route('catabook-backend.create')
+            ->with('error', 'Failed to create.')
+            ->withInput();
     }
+
 
     public function edit(CatalogueBook $catabook)
     {
@@ -71,50 +83,92 @@ class CatalogueBookController extends Controller
 
     public function update(Request $request, CatalogueBook $catabook)
     {
-        $request->validate([
-            'name_en' => 'nullable',
-            'name_km' => 'nullable',
-            'type_en' => 'nullable',
-            'type_km' => 'nullable',
-            'size_en' => 'nullable',
-            'size_km' => 'nullable',
-            'code' => 'nullable',
-            'isbn' => 'nullable',
+        $validated = $request->validate([
+            'name_en' => 'required|string',
+            'name_km' => 'required|string',
+            'type_en' => 'nullable|string',
+            'type_km' => 'nullable|string',
+            'size_en' => 'nullable|string',
+            'size_km' => 'nullable|string',
+            'code' => 'nullable|string',
+            'isbn' => 'nullable|string',
             'catalogueId' => 'nullable',
-            'version' => 'nullable',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+            'version' => 'nullable|string',
+            'default_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+            'images' => 'nullable|array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
+            'existing_images' => 'nullable|array',
         ]);
 
-        $data = $request->except('_token', 'image', '_method');
+        // Handle default image
+        if ($request->hasFile('default_image')) {
+            $validated['default_image'] = $request->file('default_image')->store('catabooks', 'custom');
 
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('catabooks', 'custom');
+            if ($catabook->default_image && Storage::disk('custom')->exists($catabook->default_image)) {
+                Storage::disk('custom')->delete($catabook->default_image);
+            }
+        } else {
+            $validated['default_image'] = $catabook->default_image;
+        }
 
-            if ($catabook->image && Storage::disk('custom')->exists($catabook->image)) {
-                Storage::disk('custom')->delete($catabook->image);
+        // Existing images to keep
+        $existingImages = $request->existing_images ?? [];
+
+        // Remove deleted images from storage
+        $oldImages = $catabook->images ? json_decode($catabook->images, true) : [];
+        $imagesToDelete = array_diff($oldImages, $existingImages);
+
+        foreach ($imagesToDelete as $img) {
+            if (Storage::disk('custom')->exists($img)) {
+                Storage::disk('custom')->delete($img);
+            }
+
+            // Delete the folder if empty
+            $folder = dirname($img);
+            if (Storage::disk('custom')->exists($folder) && count(Storage::disk('custom')->files($folder)) === 0) {
+                Storage::disk('custom')->deleteDirectory($folder);
             }
         }
 
-        $i = $catabook->update($data);
-
-        if ($i) {
-            return redirect()->route('catabook-backend.index')->with('success', 'Updated Successfully!');
-        } else {
-            return redirect()->route('catabook-backend.edit')
-                ->with('error', 'Failed to updated Product.')
-                ->withInput();
+        // Handle new uploaded images
+        $folderName = strtolower(str_replace(' ', '_', $validated['name_en']));
+        $newImages = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $imageFile) {
+                $path = $imageFile->store("catabooks/{$folderName}", 'custom');
+                $newImages[] = $path;
+            }
         }
+
+        $validated['images'] = json_encode(array_merge($existingImages, $newImages));
+
+        $catabook->update($validated);
+
+        return redirect()->route('catabook-backend.index', ['page' => $request->query('page', 1)])
+            ->with('success', 'Updated Successfully!');
     }
 
     public function delete(CatalogueBook $catabook)
     {
-        if ($catabook->image && Storage::disk('custom')->exists($catabook->image)) {
-            Storage::disk('custom')->delete($catabook->image);
+        // Delete default image
+        if ($catabook->default_image && Storage::disk('custom')->exists($catabook->default_image)) {
+            Storage::disk('custom')->delete($catabook->default_image);
         }
 
-        $i = $catabook->delete();
+        // Delete all other images
+        if ($catabook->images) {
+            $images = json_decode($catabook->images, true);
+            foreach ($images as $img) {
+                if (Storage::disk('custom')->exists($img)) {
+                    Storage::disk('custom')->delete($img);
+                }
+            }
+        }
 
-        if ($i) {
+        // Delete the catalogue book record
+        $deleted = $catabook->delete();
+
+        if ($deleted) {
             return redirect()->route('catabook-backend.index')->with('success', 'Deleted successfully!');
         } else {
             return redirect()->back()->with('error', 'Failed to delete.');

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\BoardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
@@ -20,8 +22,10 @@ use App\Http\Controllers\Admin\CatalogueBookController;
 use App\Http\Controllers\Frontend\CataloguesController;
 use App\Http\Controllers\Admin\VersionBackendController;
 use App\Http\Controllers\Admin\CataloguesBackendController;
+use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Controllers\Admin\MissionBackendController;
 use App\Http\Controllers\Admin\NewsBackendController;
+use App\Http\Controllers\Admin\StuffController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\NewsDetailController;
 
@@ -70,6 +74,18 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('news_backend', NewsBackendController::class)->except(['destroy', 'show']);
     Route::get('news_backend/delete/{news_backend}', [NewsBackendController::class, 'delete'])->name('news_backend.delete');
+
+    Route::resource('stuff', StuffController::class)->except(['destroy', 'show']);
+    Route::get('stuff/delete/{stuff}', [StuffController::class, 'delete'])->name('stuff.delete');
+
+    Route::resource('board', BoardController::class)->except(['destroy', 'show']);
+    Route::get('board/delete/{stuff}', [BoardController::class, 'delete'])->name('board.delete');
+
+    Route::resource('banner', BannerController::class)->except(['destroy', 'show']);
+    Route::get('banner/delete/{banner}', [BannerController::class, 'delete'])->name('banner.delete');
+
+    Route::resource('history', HistoryController::class)->except(['destroy', 'show']);
+    Route::get('history/delete/{history}', [HistoryController::class, 'delete'])->name('history.delete');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

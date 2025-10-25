@@ -49,11 +49,11 @@
 
             <div class="flex justify-between">
                 <a href="{{ route('vlog-backend.index') }}"
-                    class="border border-[#401457] hover:!bg-[#401457] hover:!text-[#ffffff] px-4 py-1 md:px-6 rounded-[5px] text-[#401457]">
+                    class="border border-[#000] hover:!bg-[#000] hover:!text-[#ffffff] px-4 py-1 md:px-6 rounded-[5px] text-[#000]">
                     Back
                 </a>
 
-                <button type="submit" class="bg-[#401457] text-white px-4 py-1 md:px-6 rounded-[5px]">Submit</button>
+                <button type="submit" class="bg-[#000] text-white px-4 py-1 md:px-6 rounded-[5px]">Submit</button>
             </div>
         </form>
     </div>

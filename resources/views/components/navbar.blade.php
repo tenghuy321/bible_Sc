@@ -4,7 +4,7 @@
     }
 </style>
 
-<nav class="absolute top-0 left-0 right-0 max-w-[1200px] mx-auto ">
+<nav class="absolute top-0 left-0 right-0 max-w-[1200px] mx-auto z-40">
 
     @php
         $locale = app()->getLocale();
@@ -140,7 +140,7 @@
             </a>
 
         </div>
-        <div class="hidden lg:flex lg:gap-x-8" data-aos="fade-left" data-aos-duration="1000">
+        <div class="hidden lg:flex lg:gap-x-12" data-aos="fade-left" data-aos-duration="1000">
             <a href="{{ route('home') }}"
                 class="relative text-[20px] {{ request()->routeIs('home') ? 'text-[#32CDF0] before:scale-x-100' : 'text-[#000]' }}
                     before:absolute before:-bottom-9 before:w-full before:h-[4px] before:bg-[#32CDF0]

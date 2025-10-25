@@ -282,41 +282,59 @@ $spanIndex = 0;
             x-show="selectedChapter==='{{ $chapter->id }}'"
             x-transition
             x-data="{
-                selectedSpan: null,
-                selectedText: '',
-                highlightColors: {},
-                showPopup: false,
-                copied: false,
-                toggleHighlight(index, color) {
-                    this.highlightColors[index] = this.highlightColors[index] === color ? null : color;
-                },
-                copyText() {
-                    if(!this.selectedText) return;
-                    navigator.clipboard.writeText(this.selectedText)
-                        .then(() => { this.copied = true; setTimeout(()=> this.copied = false, 1500); });
-                },
+    selectedSpan: null,
+    selectedText: '',
+    selectedVerse: '',
+    numberChapter: '',
+    highlightColors: {},
+    showPopup: false,
+    copied: false,
+
+    toggleHighlight(index, color) {
+        this.highlightColors[index] = this.highlightColors[index] === color ? null : color;
+    },
+
+    copyText() {
+        if (!this.selectedText) return;
+        const textToCopy = this.numberChapter
+            ? `${this.selectedText} \n\n${this.numberChapter}`
+            : this.selectedText;
+        navigator.clipboard.writeText(textToCopy)
+            .then(() => { this.copied = true; setTimeout(() => this.copied = false, 1500); });
+    },
+
 shareText() {
     const pageUrl = window.location.href;
+
+    const shareContent = `${this.selectedText}\n\n${this.numberChapter}\n${pageUrl}`;
 
     if (navigator.share) {
         navigator.share({
             title: document.title,
-            url: pageUrl
-        }).catch(() => {});
+            text: shareContent,
+            {{-- url: pageUrl --}}
+        }).catch(() => {
+            navigator.clipboard.writeText(shareContent)
+                .then(() => {
+                    this.copied = true;
+                    setTimeout(() => this.copied = false, 1500);
+                });
+        });
     } else {
-        navigator.clipboard.writeText(pageUrl)
+        navigator.clipboard.writeText(shareContent)
             .then(() => {
                 this.copied = true;
                 setTimeout(() => this.copied = false, 1500);
             });
     }
 },
-closePopup() {
-    this.showPopup = false;
-    this.selectedSpan = null;
-}
 
-            }"
+    closePopup() {
+        this.showPopup = false;
+        this.selectedSpan = null;
+    }
+}"
+
             class="relative mb-6"
         >
             <h1 class="text-[16px] md:text-[18px] text-[#000] font-[700] mb-4">{{ $locale==='en'? $chapter->titleEn:$chapter->titleKm }}</h1>
@@ -366,8 +384,15 @@ closePopup() {
                     'bg-[#00d6ff]': highlightColors['{{ $spanIndex }}'] === 'blue',
                     'underline decoration-dotted': selectedSpan === '{{ $spanIndex }}'
                 }"
-                @click="selectedSpan='{{ $spanIndex }}'; selectedText=$event.currentTarget.dataset.text; showPopup=true;"
-            >
+                @click="
+    selectedSpan='{{ $spanIndex }}';
+    const text = $event.currentTarget.dataset.text.trim();
+    const numMatch = text.match(/^(\d+)[\s:\-]*/);
+    selectedVerse = numMatch ? numMatch[1] : '';
+    selectedText = text.replace(/^(\d+)[\s:\-]*/, '').trim();
+    numberChapter = '{{ $book->nameKm ?? $book->nameEn }}' + (selectedVerse ? '{{ $chapter->nameEn }}' + ':' + selectedVerse : '');
+    showPopup = true;
+">
                 {!! $spanWithRedNumber !!}
             </span>
 
@@ -391,6 +416,11 @@ closePopup() {
                 class="fixed bottom-4 left-1/2 w-[90%] md:w-[400px] transform -translate-x-1/2 z-50 bg-white border shadow-lg rounded-md p-3 flex gap-2 items-center"
             >
                 <div class="w-full max-w-md mx-auto bg-white rounded-xl flex flex-col gap-4 px-2 pt-12 pb-4 relative">
+                    <!-- Verse Reference -->
+                    <div x-show="numberChapter" class="absolute top-2 left-4 text-gray-700 text-sm font-semibold">
+                        <span x-text="numberChapter"></span>
+                    </div>
+
                     <!-- Header: Highlight -->
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-2 text text-[14px] md:text-[16px] text-[#000] font-semibold">

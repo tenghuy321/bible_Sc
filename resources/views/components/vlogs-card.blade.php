@@ -32,8 +32,8 @@
 @endphp
 
 <div
-    class="w-full h-full max-w-[386px] md:max-w-[720px] xl:max-w-[1200px] mx-auto translate-y-[-12%] md:translate-y-[-22%] lg:translate-y-[-18%] overflow-y-auto overflow-x-hidden px-3">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    class="w-full h-full xl:max-w-[1200px] mx-auto translate-y-[-12%] md:translate-y-[-22%] lg:translate-y-[-18%] overflow-y-auto overflow-x-hidden px-3">
+    <div class="grid lg:hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach ($vlogs as $vlog)
             @php
                 $videoId = $vlog->video_Url ? getYoutubeVideoId($vlog->video_Url) : null;
@@ -56,6 +56,45 @@
                 </div>
             </div>
         @endforeach
+    </div>
+
+    <div class="hidden lg:block">
+        @foreach ($vlogs->chunk(3) as $chunk)
+        <div class="relative my-10">
+            {{-- top color --}}
+            <div class="absolute inset-0 h-[20%] bg-gradient-to-l from-[#3f1507] to-[#8e644c]"></div>
+            {{-- bottom color --}}
+            <div class="absolute inset-x-0 bottom-0 h-[80%] bg-[#fff]"></div>
+
+            {{-- vlog cards --}}
+            <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto p-6">
+                @foreach ($chunk as $vlog)
+                    @php
+                        $videoId = $vlog->video_Url ? getYoutubeVideoId($vlog->video_Url) : null;
+                        $thumbnailUrl = $videoId
+                            ? "https://img.youtube.com/vi/{$videoId}/hqdefault.jpg"
+                            : asset('images/default-thumbnail.jpg');
+                    @endphp
+
+                    <div onclick="openVideoModal('{{ $videoId }}')"
+                        class="cursor-pointer w-full bg-white rounded-[22px] border border-gray-300 shadow-md p-3 transition-all duration-300 hover:scale-[1.02]">
+                        <div class="relative">
+                            <img src="{{ $thumbnailUrl }}" alt="vlog-thumbnail"
+                                class="w-full h-fit object-contain object-center rounded-[5%]">
+                        </div>
+                        <div class="p-1 font-kantumruy">
+                            <h1 class="text-[15px] font-bold">
+                                {{ app()->getLocale() === 'km' ? $vlog->title_km : $vlog->title_en }}
+                            </h1>
+                            <div class="text-[14px] whitespace-pre-line max-w-full">
+                                {!! app()->getLocale() === 'km' ? $vlog->paragraph_km : $vlog->paragraph_en !!}
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endforeach
     </div>
 </div>
 

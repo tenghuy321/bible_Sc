@@ -21,8 +21,8 @@
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Image</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Name</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Code</th>
-                        <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Type</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Size</th>
+                        <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Type</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Isbn</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Catalogue</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Action</th>
@@ -34,7 +34,7 @@
                         <tr class="border border-[#4FC9EE]">
                             {{-- <td class="text-left py-3 px-4 text-[10px] md:text-[12px] border-r border-[#4FC9EE]">{{ $cata_book->auto_number }}</td> --}}
                             <td class="text-left py-3 px-4 text-[10px] md:text-[12px] border-r border-[#4FC9EE]">
-                                <img src="{{ asset($cata_book->image) }}" alt="" class="w-12 h-10">
+                                <img src="{{ asset($cata_book->default_image) }}" alt="" class="w-12 h-10">
                             </td>
                             <td class="text-left py-3 px-4 text-[10px] md:text-[12px] max-w-[100px] truncate border-r border-[#4FC9EE]">{{ $cata_book->name_en }}</td>
                             <td class="text-left py-3 px-4 text-[10px] md:text-[12px] max-w-[100px] truncate border-r border-[#4FC9EE]">{{ $cata_book->type_en }}</td>
@@ -48,7 +48,7 @@
                                     onclick="event.preventDefault(); deleteRecord('{{ route('catabook-backend.delete', $cata_book->id) }}')">
                                     <svg class="w-6 h-6 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2"> <path d="M4 7l16 0"></path> <path d="M10 11l0 6"></path> <path d="M14 11l0 6"></path> <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path> <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path> </svg>
                                 </a>
-                                <a href="{{ route('catabook-backend.edit', $cata_book->id) }}" title="Edit">
+                                <a href="{{ route('catabook-backend.edit', ['catabook' => $cata_book->id, 'page' => request('page')]) }}" title="Edit">
                                     <svg class="w-6 h-6 text-green-500 hover:text-green-700 transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2"> <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path> <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path> <path d="M16 5l3 3"></path> </svg>
                                 </a>
                              </div>

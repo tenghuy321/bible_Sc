@@ -23,6 +23,15 @@
                             class="mt-1 block w-full p-2 border rounded-md text-black text-[12px]">{{ old('content_en', $mission->content_en) }}</textarea>
                         <x-input-error class="mt-2" :messages="$errors->get('content_en')" />
                     </div>
+                    @if ($mission->id !== 4)
+                        <div>
+                            <label for="description_en"
+                                class="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea name="description_en" id="description_en" rows="6"
+                                class="mt-1 block w-full p-2 border rounded-md text-black text-[12px]">{{ old('description_en', $mission->description_en) }}</textarea>
+                            <x-input-error class="mt-2" :messages="$errors->get('description_en')" />
+                        </div>
+                    @endif
                 </div>
 
                 <div class="p-0 space-y-4">
@@ -39,6 +48,15 @@
                             class="mt-1 block w-full p-2 border rounded-md text-black text-[12px]">{{ old('content_kh', $mission->content_kh) }}</textarea>
                         <x-input-error class="mt-2" :messages="$errors->get('content_kh')" />
                     </div>
+                    @if ($mission->id !== 4)
+                        <div>
+                            <label for="description_kh"
+                                class="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea name="description_kh" id="description_kh" rows="6"
+                                class="mt-1 block w-full p-2 border rounded-md text-black text-[12px]">{{ old('description_kh', $mission->description_kh) }}</textarea>
+                            <x-input-error class="mt-2" :messages="$errors->get('description_kh')" />
+                        </div>
+                    @endif
                 </div>
             </div>
 
@@ -122,6 +140,31 @@
             .catch(error => {
                 console.error(error);
             });
+
+        ClassicEditor
+            .create(document.querySelector('#description_en'), {
+                toolbar: [
+                    'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
+                    'undo', 'redo', 'code', 'codeBlock'
+                ],
+                removePlugins: ['Heading']
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        ClassicEditor
+            .create(document.querySelector('#description_kh'), {
+                toolbar: [
+                    'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
+                    'undo', 'redo', 'code', 'codeBlock'
+                ],
+                removePlugins: ['Heading']
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
 
         let selectedImages = []; // newly added files
         let removedImages = []; // existing images marked for removal

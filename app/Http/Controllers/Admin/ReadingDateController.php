@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\ReadingDate;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ReadingDateController extends Controller
 {
@@ -22,8 +23,9 @@ class ReadingDateController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title_en' => 'required|string|max:255',
-            'title_km' => 'nullable|string|max:255',
+            'title_en' => 'required',
+            'title_km' => 'nullable',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         ReadingDate::create($request->all());
@@ -39,13 +41,32 @@ class ReadingDateController extends Controller
     public function update(Request $request, ReadingDate $reading)
     {
         $request->validate([
-            'title_en' => 'required|string|max:255',
-            'title_km' => 'nullable|string|max:255',
+            'title_en' => 'nullable',
+            'title_km' => 'nullable',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        $reading->update($request->all());
+        $data = $request->except('_token', 'image', '_method');
 
-        return redirect()->route('readingdate.index')->with('success', 'Updated successfully.');
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('reading', 'custom');
+
+            if ($reading->image && Storage::disk('custom')->exists($reading->image)) {
+                Storage::disk('custom')->delete($reading->image);
+            }
+        }
+
+        // $reading->update($request->all());
+        $i = $reading->update($data);
+        if ($i) {
+            return redirect()->route('readingdate.index')->with('success', 'Updated Successfully!');
+        } else {
+            return redirect()->route('readingdate.edit')
+                ->with('error', 'Failed to updated Product.')
+                ->withInput();
+        }
+
+        // return redirect()->route('readingdate.index')->with('success', 'Updated successfully.');
     }
 
     public function delete(ReadingDate $reading)

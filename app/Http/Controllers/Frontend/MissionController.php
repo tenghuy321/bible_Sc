@@ -11,7 +11,8 @@ class MissionController extends Controller
 {
     public function index()
     {
-        $data['missions'] = Mission::get();
+        $data['missions'] = Mission::where('id', '!=' , "4")->get();
+        $data['mission_image'] = Mission::where("id", "=", "4")->first();
         $data['versions_item'] = Version::where('slug', '=', 'khmer-standard-version-khsv')->first();
 
         return view('frontend.mission', $data);

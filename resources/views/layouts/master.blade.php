@@ -54,10 +54,10 @@
         }
 
         .swiper .swiper-pagination-bullet {
-            background-color: #000;
-            width: 4px;
+            background-color: #fff;
+            width: 10px;
             height: 4px;
-            border-radius: 50%;
+            border-radius: 10px;
             margin: 0 5px;
         }
 
@@ -65,7 +65,7 @@
             width: 10px;
             height: 4px;
             border-radius: 10px;
-            background-color: #000;
+            background-color: #4FC9EE;
         }
 
         @media (min-width: 1700px) {
@@ -120,8 +120,15 @@
 
         var missionSwiper = new Swiper(".MissionSwiper", {
             loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        });
+
+        var bannerSwiper = new Swiper(".BannerSwiper", {
+            loop: true,
             autoplay: {
-                delay: 2000,
+                delay: 5000,
             },
             pagination: {
                 el: ".swiper-pagination",

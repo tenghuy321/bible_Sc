@@ -125,8 +125,40 @@
                         <li
                             class="nav-link {{ Request::is('news_backend') ? 'bg-[#4FC9EE] rounded-md !text-[#ffffff]' : '' }}">
                             <a href="{{ url('news_backend') }}">
-                                <i class='bx bxs-notepad icon'></i>
+                                <i class='bx bxs-news icon' ></i>
                                 <span class="text nav-text">News</span>
+                            </a>
+                        </li>
+
+                        <li
+                            class="nav-link {{ Request::is('history') ? 'bg-[#4FC9EE] rounded-md !text-[#ffffff]' : '' }}">
+                            <a href="{{ url('history') }}">
+                                <i class='bx bx-history icon' ></i>
+                                <span class="text nav-text">History</span>
+                            </a>
+                        </li>
+
+                        <li
+                            class="nav-link {{ Request::is('stuff') ? 'bg-[#4FC9EE] rounded-md !text-[#ffffff]' : '' }}">
+                            <a href="{{ url('stuff') }}">
+                                <i class='bx bx-user-pin icon'></i>
+                                <span class="text nav-text">Our Staff</span>
+                            </a>
+                        </li>
+
+                        <li
+                            class="nav-link {{ Request::is('board') ? 'bg-[#4FC9EE] rounded-md !text-[#ffffff]' : '' }}">
+                            <a href="{{ url('board') }}">
+                                <i class='bx bxs-chalkboard icon'></i>
+                                <span class="text nav-text">Our Board</span>
+                            </a>
+                        </li>
+
+                        <li
+                            class="nav-link {{ Request::is('banner') ? 'bg-[#4FC9EE] rounded-md !text-[#ffffff]' : '' }}">
+                            <a href="{{ url('banner') }}">
+                                <i class='bx bxs-image icon' ></i>
+                                <span class="text nav-text">Banner</span>
                             </a>
                         </li>
                     </ul>

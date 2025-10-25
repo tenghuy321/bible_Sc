@@ -20,6 +20,7 @@
             <table class="min-w-full table-fixed">
                 <thead class="text-[#fff] sticky top-0 z-10 bg-[#4FC9EE] border border-[#4FC9EE]">
                     <tr>
+                        <th class="text-left py-3 px-4 text-xs w-[200px] border-r border-[#fff]">Image</th>
                         <th class="text-left py-3 px-4 text-xs w-[200px] border-r border-[#fff]">Title</th>
                         <th class="text-left py-3 px-4 text-xs w-[50px]">Actions</th>
                     </tr>
@@ -28,9 +29,12 @@
                     @foreach ($readings as $reading)
                         <tr class="border border-[#4FC9EE]">
 
+                            <td class="py-1 px-4 text-xs max-w-[200px] border-r border-[#4FC9EE]">
+                                <img src="{{ asset($reading->image) }}" alt="" class="w-12 h-12">
+                            </td>
                             <td class="py-4 px-4 text-xs max-w-[200px] border-r border-[#4FC9EE]">
                                 <div class="flex flex-col truncate">
-                                    <p>{{ $reading->title_en }}</p>
+                                    <p>{!! $reading->title_en !!}</p>
                                 </div>
                             </td>
 
@@ -45,7 +49,7 @@
                                         </svg>
                                     </a>
 
-                                    <a href="#" title="Delete"
+                                    {{-- <a href="#" title="Delete"
                                         onclick="event.preventDefault(); deleteRecord('{{ route('readingdate.delete', $reading->id) }}')">
                                         <svg class="w-6 h-6 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                                             viewBox="0 0 24 24">
@@ -53,7 +57,7 @@
                                                 stroke-width="1.5"
                                                 d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
                                         </svg>
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </td>
                         </tr>

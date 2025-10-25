@@ -11,8 +11,12 @@ return [
 
     "welcome" => "The Bible Society in Cambodia.",
     "bible" => "Bible",
-    "everyone" => "For Everyone",
+    "everyone" => "Bible For Everyone",
     "title-1" => "Welcome to",
+
+    "history_title" => "ប្រវត្តិនៃព្រះគម្ពីរបរិសុទ្ធ (១៩៥៤) ឬហៅម្យ៉ាងទៀតថា ព្រះគម្ពីរហាម៉ុង",
+    "history_des" => "ប្រវត្តិនៃព្រះគម្ពីរខ្មែរដំបូងដែលគ្រិស្តបរិស័ទនិយមហៅថាព្រះគម្ពីរបរិសុទ្ធ ឬព្រះគម្ពីរហាម៉ុង មានមូលដ្ឋានគ្រឹះនៅលើកិច្ចការរបស់សាសនទូត និងការវិវឌ្ឍន៍របស់ភាសានៅប្រទេសកម្ពុជាក្នុងសម័យអាណានិគម។ គម្រោងបកប្រែដ៏សំខាន់នេះបានប្រើពេលជាងបីទសវត្សរ៍ និងតំណាងឱ្យផ្នែកដ៏សំខាន់មួយនៃការអភិវឌ្ឍក្រុមជំនុំនៅក្នុងប្រទេសកម្ពុជា និងអក្សរសាស្ត្រនៅក្នុងព្រះគម្ពីរជាភាសាខ្មែរ។",
+
 
     "quote" => "GOD’S WORD Living Hope for All.",
 
@@ -20,13 +24,13 @@ return [
     "usd" => "USD",
     "khr" => "KHR",
     "amount" => "Enter amount",
-    "donate" =>  "Donation Now",
+    "donate" =>  "Donation",
 
     "highlight" => 'Highlight',
     "share" => 'Share',
     "copy" => 'Copy',
 
-    "sop" => "Statement of Purpose",
+    "sop" => "Purpose",
     "sop_content" => "The Bible Society in Cambodia is an affiliated member of the United Bible Societies, registered in Cambodia with the Ministry of Cults and Religions as a religious organization. Bible Society began its ministry in Cambodia in 1892, with the purpose of making God’s Word available to people in Cambodia, in a language they can understand, and in media that meet people’s needs. The ministry of Bible Society focuses primarily on Bible translation, publishing and distribution, and also on Scripture engagement, advocacy and literacy.",
     "dsr" => "Daily Scripture Reading",
     "rkbo" => "Read Khmer Bible Online",
@@ -100,13 +104,15 @@ return [
 
     "actnow" => "Act Now",
     "information"=>"Information",
+    "footer_contact" => "Contact",
     "follow_us"=>"Follow Us",
     "bsf"=>"Bible Society Office",
     "address"=>"34, Street 104P6, Phnom Penh Thmey, Khan Sen Sok, Phnom Penh 120806",
     "office_hour"=>"Office Hours",
     "date_1"=>"MON - FRI : 08:00 - 16:30",
     "date_2"=>"Saturday: by appointment only",
-    "siem_reap"=>"Siem Reap Branch",
+    "siem_reap"=>"Siem Reap",
+    "phnom_penh" => "Phnom Penh",
     "sr_address"=>"Salakanseng Village, Sangakat Svay Dangkum- SIEM REAP Tel: 014-73 74 59 / 069-73 74 59",
     "Bible_Distribution_Center"=>"Bible Distribution Center",
     "bdc_address"=>"No 19-21, Steet 330 Beung Keng Kang (opposit Tuol Sleng Museum) 023-220 475"

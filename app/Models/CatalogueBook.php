@@ -25,7 +25,12 @@ class CatalogueBook extends Model
         'code',
         'isbn',
         'version',
-        'image',
+        'default_image',
+        'images',
+    ];
+
+    protected $casts = [
+        'images' => 'array'
     ];
 
     // Auto-generate cuid-style IDs

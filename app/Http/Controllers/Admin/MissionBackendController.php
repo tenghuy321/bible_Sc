@@ -26,6 +26,8 @@ class MissionBackendController extends Controller
             'title_kh' => 'nullable|string',
             'content_en' => 'nullable|string',
             'content_kh' => 'nullable|string',
+            'description_en' => 'nullable|string',
+            'description_kh' => 'nullable|string',
             'images' => 'required|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
         ]);
@@ -43,6 +45,8 @@ class MissionBackendController extends Controller
             'title_kh' => $validated['title_kh'],
             'content_en' => $validated['content_en'],
             'content_kh' => $validated['content_kh'],
+            'description_en' => $validated['description_en'],
+            'description_kh' => $validated['description_kh'],
             'image' => json_encode($imagePaths),
         ]);
 
@@ -64,6 +68,8 @@ class MissionBackendController extends Controller
             'title_kh' => 'nullable|string',
             'content_en' => 'nullable|string',
             'content_kh' => 'nullable|string',
+            'description_en' => 'nullable|string',
+            'description_kh' => 'nullable|string',
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
         ]);
@@ -95,6 +101,8 @@ class MissionBackendController extends Controller
             'title_kh' => $validated['title_kh'],
             'content_en' => $validated['content_en'],
             'content_kh' => $validated['content_kh'],
+            'description_en' => $validated['description_en'],
+            'description_kh' => $validated['description_kh'],
             'image' => json_encode(array_values($imagePaths))
         ]);
 

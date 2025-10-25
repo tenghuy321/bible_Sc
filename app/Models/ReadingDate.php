@@ -19,6 +19,7 @@ class ReadingDate extends Model
     protected $fillable = [
         'title_en',
         'title_km',
+        'image',
     ];
 
     // Auto-generate cuid-style IDs

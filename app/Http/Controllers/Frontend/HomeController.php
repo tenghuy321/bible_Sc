@@ -8,6 +8,8 @@ use App\Models\ReadingDate;
 use Illuminate\Http\Request;
 use App\Helpers\PayWayApiCheckout;
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
+use App\Models\History;
 use App\Models\Mission;
 use App\Models\News;
 use App\Models\Vlog;
@@ -18,7 +20,9 @@ class HomeController extends Controller
     {
         $data['versions'] = Version::all();
         $data['versions_item'] = Version::where('slug', '=', 'khmer-standard-version-khsv')->first();
-        $data['readings'] = ReadingDate::all();
+        $data['readings'] = ReadingDate::first();
+        $data['banners'] = Banner::get();
+        $data['history'] = History::first();
         // Get the latest news item
         $data['latestNews'] = News::latest()->first();
         $data['latestMission'] = Mission::latest()->first();

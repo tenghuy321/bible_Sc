@@ -21,6 +21,12 @@
                             class="mt-1 block w-full p-2 border rounded-md text-[#000] text-sm">{{ old('content_en') }}</textarea>
                         <x-input-error class="mt-2" :messages="$errors->get('content_en')" />
                     </div>
+                    <div>
+                        <label for="description_en" class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea name="description_en" id="description_en" rows="4"
+                            class="mt-1 block w-full p-2 border rounded-md text-[#000] text-sm">{{ old('description_en') }}</textarea>
+                        <x-input-error class="mt-2" :messages="$errors->get('description_en')" />
+                    </div>
 
                 </div>
 
@@ -37,6 +43,12 @@
                         <textarea name="content_kh" id="content_kh" rows="4"
                             class="mt-1 block w-full p-2 border rounded-md text-[#000] text-sm">{{ old('content_kh') }}</textarea>
                         <x-input-error class="mt-2" :messages="$errors->get('content_kh')" />
+                    </div>
+                    <div>
+                        <label for="description_kh" class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea name="description_kh" id="description_kh" rows="4"
+                            class="mt-1 block w-full p-2 border rounded-md text-[#000] text-sm">{{ old('description_kh') }}</textarea>
+                        <x-input-error class="mt-2" :messages="$errors->get('description_kh')" />
                     </div>
                 </div>
             </div>
@@ -87,6 +99,30 @@
 
         ClassicEditor
             .create(document.querySelector('#content_kh'), {
+                toolbar: [
+                    'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
+                    'undo', 'redo', 'code', 'codeBlock'
+                ],
+                removePlugins: ['Heading']
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        ClassicEditor
+            .create(document.querySelector('#description_en'), {
+                toolbar: [
+                    'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
+                    'undo', 'redo', 'code', 'codeBlock'
+                ],
+                removePlugins: ['Heading']
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        ClassicEditor
+            .create(document.querySelector('#description_kh'), {
                 toolbar: [
                     'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
                     'undo', 'redo', 'code', 'codeBlock'

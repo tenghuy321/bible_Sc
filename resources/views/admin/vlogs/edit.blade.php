@@ -1,42 +1,3 @@
-{{-- @section('content')
-    <div class="container mx-auto p-4">
-        <h1 class="text-xl font-bold mb-4">Edit Vlog</h1>
-
-        <form action="{{ route('vlog-backend.update', $vlog->id) }}" method="POST" class="space-y-4">
-            @csrf
-            @method('PUT')
-
-            <div>
-                <label class="block">YouTube URL</label>
-                <input type="url" name="video_Url" class="border p-2 w-full" value="{{ old('video_Url', $vlog->video_Url) }}" required>
-            </div>
-
-            <div>
-                <label class="block">Title (English)</label>
-                <input type="text" name="title_en" class="border p-2 w-full" value="{{ old('title_en', $vlog->title_en) }}" required>
-            </div>
-
-            <div>
-                <label class="block">Title (Khmer)</label>
-                <input type="text" name="title_km" class="border p-2 w-full" value="{{ old('title_km', $vlog->title_km) }}">
-            </div>
-
-            <div>
-                <label class="block">Paragraph (English)</label>
-                <textarea name="paragraph_en" class="border p-2 w-full">{{ old('paragraph_en', $vlog->paragraph_en) }}</textarea>
-            </div>
-
-            <div>
-                <label class="block">Paragraph (Khmer)</label>
-                <textarea name="paragraph_km" class="border p-2 w-full">{{ old('paragraph_km', $vlog->paragraph_km) }}</textarea>
-            </div>
-
-            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Update</button>
-        </form>
-    </div>
-@endsection --}}
-
-
 <x-app-layout>
     <div class="max-w-7xl mx-auto shadow-md rounded-lg p-6 my-2">
         <h2 class="text-2xl font-bold text-[#401457]">Edit Vlogs</h2>
@@ -89,11 +50,11 @@
 
             <div class="flex justify-between">
                 <a href="{{ route('vlog-backend.index') }}"
-                    class="border border-[#401457] hover:!bg-[#401457] hover:!text-[#ffffff] px-4 py-1 md:px-6 rounded-[5px] text-[#401457]">
+                    class="border border-[#000] hover:!bg-[#000] hover:!text-[#ffffff] px-4 py-1 md:px-6 rounded-[5px] text-[#000]">
                     Back
                 </a>
 
-                <button type="submit" class="bg-[#401457] text-white px-4 py-1 md:px-6 rounded-[5px]">Submit</button>
+                <button type="submit" class="bg-[#000] text-white px-4 py-1 md:px-6 rounded-[5px]">Submit</button>
             </div>
         </form>
     </div>
