@@ -60,7 +60,8 @@
 
         <div class="relative w-full max-w-7xl mx-auto text-center z-10">
             <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
-                <h1 class="text-[30px] md:text-[50px] xl:text-[5rem] font-[600] leading-none uppercase {{ app()->getLocale() === 'km' ? 'font-kantumruy' : 'font-caprasimo' }}">
+                <h1
+                    class="text-[30px] md:text-[50px] xl:text-[5rem] font-[600] leading-none uppercase {{ app()->getLocale() === 'km' ? 'font-kantumruy' : 'font-caprasimo' }}">
                     {{ __('messages.everyone') }}
                 </h1>
             </div>
@@ -154,7 +155,8 @@
         </div>
     </div>
 
-    <div class="w-full h-fit bg-[linear-gradient(85.15deg,_rgba(30,_30,_30,_0.8)_0.43%,_rgba(7,_32,_39,_0.64)_98.29%)] py-10">
+    <div
+        class="w-full h-fit bg-[linear-gradient(85.15deg,_rgba(30,_30,_30,_0.8)_0.43%,_rgba(7,_32,_39,_0.64)_98.29%)] py-10">
         <div
             class="flex flex-col md:flex-row w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto gap-4 overflow-hidden">
 
@@ -203,7 +205,7 @@
                                     <h1 class="text-[16px] md:text-[14px] xl:text-[20px] text-white min-h-[60px]">
                                         {{ app()->getLocale() === 'en' ? $category->titleEn : $category->titleKm }}
                                     </h1>
-                                    <a href="{{ url(app()->getLocale() . '/' . $category->slug) }}"  target="_blank"
+                                    <a href="{{ url(app()->getLocale() . '/' . $category->slug) }}" target="_blank"
                                         class="w-fit bg-white text-[12px] xl:text-[24px] text-black rounded-full px-[15px] py-[2px] xl:px-[24px] mt-2">
                                         {{ __('messages.read') }}
                                     </a>
@@ -375,7 +377,8 @@
         </div>
     </section>
 
-    <div class="w-full h-fit xl:max-w-[1200px] mx-auto my-[1.5rem] px-3 py-[2rem] overflow-hidden {{ app()->getLocale() === 'km' ? 'font-krasar' : 'font-gotham' }}">
+    <div
+        class="w-full h-fit xl:max-w-[1200px] mx-auto my-[1.5rem] px-3 py-[2rem] overflow-hidden {{ app()->getLocale() === 'km' ? 'font-krasar' : 'font-gotham' }}">
         <div class="my-5">
             <h1 class="text-gradient text-[20px] md:text-[25px] font-[600] max-w-[250px] mb-2 md:max-w-full">
                 {{ app()->getLocale() === 'km' ? 'ប្រវត្តិនៃការបកប្រែព្រះគម្ពីរជាភាសាខ្មែរ' : 'Khmer Bible Translation History' }}
@@ -389,17 +392,17 @@
             @endphp
             {{-- <img src="{{ asset('assets/images/Banners/history.jpg') }}" alt="banner" data-aos="fade-right"
                 data-aos-duration='500' class="w-full h-full object-cover object-center" /> --}}
-                <div class="swiper MissionSwiper w-full">
-                    <div class="swiper-wrapper w-full">
-                        @foreach ($history_images as $img)
-                            <div class="swiper-slide w-full">
-                                <img src="{{ asset($img) }}" alt="" loading="lazy"
-                                    class="w-full h-full object-cover object-center">
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="swiper-pagination"></div>
+            <div class="swiper MissionSwiper w-full">
+                <div class="swiper-wrapper w-full">
+                    @foreach ($history_images as $img)
+                        <div class="swiper-slide w-full">
+                            <img src="{{ asset($img) }}" alt="" loading="lazy"
+                                class="w-full h-full object-cover object-center">
+                        </div>
+                    @endforeach
                 </div>
+                <div class="swiper-pagination"></div>
+            </div>
             <div class="bg-[#00AFD7] py-5 px-4 md:px-10 text-white relative" data-aos="fade-left"
                 data-aos-duration='500'>
                 <div class="text-[#fff]">
@@ -416,8 +419,6 @@
                     class="bg-white text-[#000] font-semibold px-4 py-2 rounded-full transition mt-10">
                     {{ app()->getLocale() === 'km' ? 'អានបន្ថែម' : 'Read More' }}
                 </button>
-
-
             </div>
 
             <!-- PDF Modal -->
@@ -428,7 +429,7 @@
 
                     <!-- Actions -->
                     <div class="px-4 py-2 flex justify-end gap-2 border-t border-gray-200 text-[14px]">
-                        <a id="downloadPdf" href="" download class="bg-[#00AFD7] text-white px-4 py-2 rounded ">
+                        <a id="downloadPdf" href="" download class="bg-[#00AFD7] text-white px-4 py-2 rounded">
                             {{ app()->getLocale() === 'km' ? 'ទាញយក' : 'Download' }}
                         </a>
                         <button id="closePdf" class="bg-[#000] text-white px-4 py-2 rounded">
@@ -497,8 +498,13 @@
             const closePdf = document.getElementById('closePdf');
             const downloadPdf = document.getElementById('downloadPdf');
 
-            // Path to your PDF
-            const pdfUrl = "{{ asset('assets/history.pdf') }}";
+            // Detect current Laravel locale
+            const currentLocale = "{{ app()->getLocale() }}";
+
+            // Choose the correct PDF file based on language
+            const pdfUrl = currentLocale === 'km' ?
+                "{{ asset('assets/history_kh.pdf') }}" :
+                "{{ asset('assets/history_en.pdf') }}";
 
             // Open preview
             previewBtn.addEventListener('click', () => {

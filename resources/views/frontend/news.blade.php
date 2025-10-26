@@ -4,8 +4,7 @@
         $locale = app()->getLocale();
     @endphp
 
-    <section class="w-full h-[60vh] flex items-center justify-center overflow-hidden"
-        style="background-image: url('{{ asset('assets/images/Banners/banner.jpg') }}'); background-size: cover; background-position: center;">
+    <section class="w-full h-[15vh] md:h-[15vh] xl:h-[30vh] flex items-center justify-center overflow-hidden">
     </section>
 
     {{-- <div

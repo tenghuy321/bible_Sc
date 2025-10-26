@@ -4,7 +4,7 @@
     @php
         $locale = app()->getLocale();
     @endphp
-    <section class="w-full h-[60vh] md:h-screen flex items-center justify-center overflow-hidden"
+    {{-- <section class="w-full h-[60vh] md:h-screen flex items-center justify-center overflow-hidden"
         style="background-image: url('{{ asset('assets/images/Banners/banner.jpg') }}'); background-size: cover; background-position: center;">
         <div class="flex items-center justify-between gap-2 w-full max-w-7xl mx-auto px-4 md:px-20 ">
             <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
@@ -19,6 +19,8 @@
                 class="w-full text-[14px] xl:text-[24px] text-[#ffffff] font-[400] flex justify-end">
                 {{ __('messages.quote') }}</p>
         </div>
+    </section> --}}
+    <section class="w-full h-[15vh] md:h-[15vh] xl:h-[30vh] flex items-center justify-center overflow-hidden">
     </section>
 
     <section id="news_items" class="max-w-7xl mx-auto py-10 px-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
