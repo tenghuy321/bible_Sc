@@ -203,7 +203,7 @@
                                     <h1 class="text-[16px] md:text-[14px] xl:text-[20px] text-white min-h-[60px]">
                                         {{ app()->getLocale() === 'en' ? $category->titleEn : $category->titleKm }}
                                     </h1>
-                                    <a href="{{ url(app()->getLocale() . '/' . $category->slug) }}"
+                                    <a href="{{ url(app()->getLocale() . '/' . $category->slug) }}"  target="_blank"
                                         class="w-fit bg-white text-[12px] xl:text-[24px] text-black rounded-full px-[15px] py-[2px] xl:px-[24px] mt-2">
                                         {{ __('messages.read') }}
                                     </a>
