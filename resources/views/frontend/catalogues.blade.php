@@ -60,10 +60,11 @@
                 this.mode = '';
             }
         }">
+
             {{-- Catalogue List --}}
             @forelse($catalogues as $catalogue)
                 <div class="mb-10">
-                    <div class="flex items-center gap-4 mb-4">
+                    <div class="flex items-center gap-4 {{ $catalogue->id !== 'cmdmthruw000656ensuaq6dm8' ? 'mt-5 md:mt-[12rem]' : 'mt-5' }} mt-40 mb-10">
                         <h2 class="text-[#000] text-[22px] md:text-[28px] font-bold">
                             {{ $locale === 'km' ? $catalogue->name_km : $catalogue->name_en }}
                         </h2>
