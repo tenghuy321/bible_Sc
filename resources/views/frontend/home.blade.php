@@ -61,7 +61,7 @@
         <div class="relative w-full max-w-7xl mx-auto text-center z-10">
             <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
                 <h1
-                    class="font-[500] leading-10 md:leading-none {{ app()->getLocale() === 'km' ? 'font-fasthand text-[20px] md:text-[40px] xl:text-[4rem]' : 'font-aesthetic text-[25px] md:text-[50px] xl:text-[5rem]' }}">
+                    class="font-[500] leading-10 md:leading-none {{ app()->getLocale() === 'km' ? 'font-fasthand text-[20px] md:text-[40px] xl:text-[60px]' : 'font-aesthetic text-[25px] md:text-[50px] xl:text-[5rem]' }}">
                     {{-- {{ __('messages.everyone') }} --}}
                     {!! app()->getLocale() === 'km' ? $ban->title_kh : $ban->title_en !!}
                 </h1>
