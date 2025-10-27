@@ -39,7 +39,7 @@
     <div class="w-full max-w-[420px] md:max-w-[720px] xl:max-w-[1200px] mx-auto h-full pb-10 px-2" x-data="{ expandedIndex: null }">
         <h1 class="text-[20px] xl:text-[30px] text-[#4FC9EE] text-center pb-16">
             {{ app()->getLocale() === 'km' ? 'កាលប្បវត្តនៃព័ន្ធកិច្ចរបស់សមាគមព្រះគម្ពីរនៅកម្ពុជា' : 'Timeline of The Bible Society in Cambodia’s Ministry' }}
-    </h1>
+        </h1>
 
         {{-- <ul class="space-y-[1rem] md:space-y-0 md:flex gap-5 flex-wrap items-start overflow-hidden">
             @foreach ($Experience as $index => $item)
@@ -93,8 +93,16 @@
         </ul>
     </div>
 
+    <div class="w-full max-w-[420px] md:max-w-[720px] xl:max-w-[1200px] mx-auto flex items-center justify-center">
+        @if (app()->getLocale() === 'km')
+            <img src="{{ asset('assets/images/Bible_Lifecycle_KH.png') }}" alt="" class="w-2/3 md:w-1/2">
+        @else
+            <img src="{{ asset('assets/images/Bible_Lifecycle_EN.png') }}" alt="" class="w-2/3 md:w-1/2">
+        @endif
+    </div>
+
     <div class="w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto py-10">
-        <hr clfjlkfjlkfjass="w-full h-[2px] bg-[#000]">
+        <hr class="w-full h-[2px] bg-[#000]">
     </div>
 
     <div class="w-full max-w-[350px] md:max-w-[720px] xl:max-w-[1200px] mx-auto px-3 flex flex-wrap pb-10 overflow-hidden">
@@ -173,8 +181,7 @@
         <div class="flex flex-col xl:flex-row items-center space-y-5 xl:space-x-5">
             <div class="w-full xl:w-[40%]">
                 <div class="flex space-x-2 justify-center items-center">
-                    <div class="w-[50px] h-[50px] xl:w-[100px] xl:h-[100px]" data-aos="fade-right"
-                            data-aos-duration='300'>
+                    <div class="w-[50px] h-[50px] xl:w-[100px] xl:h-[100px]" data-aos="fade-right" data-aos-duration='300'>
                         <img src="{{ asset('assets/images/icons/fb.svg') }}" alt="banner"
                             class="w-full h-full object-cover object-center p-2" />
                     </div>
@@ -327,7 +334,7 @@
         <div class="p-3 text-center">
             <h1 class="text-[20px] md:text-[30px] xl:text-[40px] text-[#4FC9EE] font-bold mt-2">
                 {{-- {{ __('messages.our_core_value') }} --}}
-                {{ app()->getLocale() === 'km' ? "ទីតាំងសមាគមព្រះគម្ពីរនៅកម្ពុជា" : "ទីតាំងសមាគមព្រះគម្ពីរនៅកម្ពុជា" }}
+                {{ app()->getLocale() === 'km' ? 'ទីតាំងសមាគមព្រះគម្ពីរនៅកម្ពុជា' : 'ទីតាំងសមាគមព្រះគម្ពីរនៅកម្ពុជា' }}
             </h1>
         </div>
 
@@ -337,7 +344,7 @@
             <div class="w-full lg:w-[48%]" data-aos="fade-right" data-aos-duration="500">
                 <h1
                     class="font-bold text-center text-wrap text-[#50c9ee] {{ app()->getLocale() === 'km' ? 'font-krasar text-[20px]' : 'font-gotham text-[20px] leading-[20px]' }}">
-                    {{ app()->getLocale() === 'km' ? "សមាគមព្រះគម្ពីរភ្នំពេញ" : "សមាគមព្រះគម្ពីរភ្នំពេញ" }}
+                    {{ app()->getLocale() === 'km' ? 'សមាគមព្រះគម្ពីរភ្នំពេញ' : 'សមាគមព្រះគម្ពីរភ្នំពេញ' }}
                 </h1>
                 <iframe class="w-full h-[40vh] md:h-[50vh] my-5 rounded-[20px] md:rounded-[50px]"
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d663.5346877170442!2d104.8583901!3d11.574516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951e8cd21db71%3A0xd83eb18e9b850632!2sThe%20Bible%20Society%20in%20Cambodia!5e1!3m2!1sen!2skh!4v1753933347744!5m2!1sen!2skh"
@@ -349,7 +356,7 @@
                 <h1 data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="500"
                     data-aos-duration="500"
                     class="font-bold text-center text-wrap text-[#50c9ee] {{ app()->getLocale() === 'km' ? 'font-krasar text-[20px]' : 'font-gotham text-[20px] leading-[20px]' }}">
-                    {{ app()->getLocale() === 'km' ? "សមាគមព្រះគម្ពីរសៀមរាប" : "សមាគមព្រះគម្ពីរសៀមរាប" }}
+                    {{ app()->getLocale() === 'km' ? 'សមាគមព្រះគម្ពីរសៀមរាប' : 'សមាគមព្រះគម្ពីរសៀមរាប' }}
                 </h1>
                 <iframe class="w-full h-[40vh] md:h-[50vh] my-5 rounded-[20px] md:rounded-[50px]"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5271.460803358791!2d103.8543079!3d13.376731399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31101703918716ff%3A0x2871b10be0d842dd!2sThe%20Bible%20Society%20in%20Cambodia%2C%20Siem%20Reap!5e1!3m2!1sen!2skh!4v1753933203503!5m2!1sen!2skh"
@@ -360,6 +367,7 @@
 
     {{-- image --}}
     <section class="relative w-full h-[20vh] sm:h-[30vh] md:h-[40vh]">
-        <img src="{{ asset('assets/images/Banners/map_img.png') }}" alt="" class="w-full h-full object-cover object-top">
+        <img src="{{ asset('assets/images/Banners/map_img.png') }}" alt=""
+            class="w-full h-full object-cover object-top">
     </section>
 @endsection
