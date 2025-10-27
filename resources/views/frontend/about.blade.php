@@ -331,20 +331,22 @@
 
     {{-- map --}}
     <section class="w-full max-w-[420px] md:max-w-[720px] xl:max-w-[1200px] mx-auto h-full my-[1rem]">
-        <div class="p-3 text-center">
-            <h1 class="text-[20px] md:text-[30px] xl:text-[40px] text-[#4FC9EE] font-bold mt-2">
-                {{-- {{ __('messages.our_core_value') }} --}}
-                {{ app()->getLocale() === 'km' ? 'ទីតាំងសមាគមព្រះគម្ពីរនៅកម្ពុជា' : 'ទីតាំងសមាគមព្រះគម្ពីរនៅកម្ពុជា' }}
+        <div class="flex justify-center py-10 px-2">
+            <h1
+                class="text-[20px] md:text-[30px] xl:text-[40px]
+               text-white bg-[#4FC9EE] font-bold mt-2 px-2 md:px-10 py-2 text-center rounded-full">
+                {{ app()->getLocale() === 'km' ? 'ទីតាំងសមាគមព្រះគម្ពីរនៅកម្ពុជា' : 'Location of The Bible Society in Cambodia' }}
             </h1>
         </div>
 
-        <div class="flex flex-wrap gap-[1rem] justify-center py-5 overflow-hidden">
+
+        <div class="flex flex-wrap gap-[1rem] items-stretch justify-center py-5 overflow-hidden">
 
             {{-- Bible Distribution Center --}}
             <div class="w-full lg:w-[48%]" data-aos="fade-right" data-aos-duration="500">
                 <h1
-                    class="font-bold text-center text-wrap text-[#50c9ee] {{ app()->getLocale() === 'km' ? 'font-krasar text-[20px]' : 'font-gotham text-[20px] leading-[20px]' }}">
-                    {{ app()->getLocale() === 'km' ? 'សមាគមព្រះគម្ពីរភ្នំពេញ' : 'សមាគមព្រះគម្ពីរភ្នំពេញ' }}
+                    class="text-[16px] md:text-[18px] font-[600] text-center text-wrap min-h-[40px] text-[#50c9ee] {{ app()->getLocale() === 'km' ? 'font-krasar' : 'font-gotham leading-[20px]' }}">
+                    {{ app()->getLocale() === 'km' ? 'សមាគមព្រះគម្ពីរនៅកម្ពុជា (ភ្នំពេញ)' : 'Location of The Bible Society in Cambodia' }}
                 </h1>
                 <iframe class="w-full h-[40vh] md:h-[50vh] my-5 rounded-[20px] md:rounded-[50px]"
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d663.5346877170442!2d104.8583901!3d11.574516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951e8cd21db71%3A0xd83eb18e9b850632!2sThe%20Bible%20Society%20in%20Cambodia!5e1!3m2!1sen!2skh!4v1753933347744!5m2!1sen!2skh"
@@ -355,8 +357,8 @@
             <div class="w-full lg:w-[48%]" data-aos="fade-left" data-aos-duration="500">
                 <h1 data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="500"
                     data-aos-duration="500"
-                    class="font-bold text-center text-wrap text-[#50c9ee] {{ app()->getLocale() === 'km' ? 'font-krasar text-[20px]' : 'font-gotham text-[20px] leading-[20px]' }}">
-                    {{ app()->getLocale() === 'km' ? 'សមាគមព្រះគម្ពីរសៀមរាប' : 'សមាគមព្រះគម្ពីរសៀមរាប' }}
+                    class="text-[16px] md:text-[18px] font-[600] text-center text-wrap min-h-[40px] text-[#50c9ee] {{ app()->getLocale() === 'km' ? 'font-krasar' : 'font-gotham leading-[20px]' }}">
+                    {{ app()->getLocale() === 'km' ? 'សមាគមព្រះគម្ពីរនៅកម្ពុជា (សៀមរាប)' : 'The Bible Society in Cambodia​ (Siem Reap)' }}
                 </h1>
                 <iframe class="w-full h-[40vh] md:h-[50vh] my-5 rounded-[20px] md:rounded-[50px]"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5271.460803358791!2d103.8543079!3d13.376731399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31101703918716ff%3A0x2871b10be0d842dd!2sThe%20Bible%20Society%20in%20Cambodia%2C%20Siem%20Reap!5e1!3m2!1sen!2skh!4v1753933203503!5m2!1sen!2skh"
