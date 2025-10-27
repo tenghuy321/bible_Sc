@@ -22,6 +22,7 @@ class HomeController extends Controller
         $data['versions_item'] = Version::where('slug', '=', 'khmer-standard-version-khsv')->first();
         $data['readings'] = ReadingDate::first();
         $data['banners'] = Banner::get();
+        $data['ban'] = Banner::first();
         $data['history'] = History::first();
         // Get the latest news item
         $data['latestNews'] = News::latest()->first();

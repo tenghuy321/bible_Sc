@@ -62,7 +62,8 @@
             <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
                 <h1
                     class="text-[25px] md:text-[50px] xl:text-[5rem] font-[500] leading-10 md:leading-none {{ app()->getLocale() === 'km' ? 'font-fasthand' : 'font-aesthetic' }}">
-                    {{ __('messages.everyone') }}
+                    {{-- {{ __('messages.everyone') }} --}}
+                    {!! app()->getLocale() === 'km' ? $ban->title_kh : $ban->title_en !!}
                 </h1>
             </div>
         </div>

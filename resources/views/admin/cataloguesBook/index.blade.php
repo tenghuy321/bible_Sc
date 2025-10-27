@@ -33,7 +33,7 @@
                         <tr class="border border-[#4FC9EE]">
                             {{-- <td class="text-left py-3 px-4 text-[10px] md:text-[12px] border-r border-[#4FC9EE]">{{ $cata_book->auto_number }}</td> --}}
                             <td class="text-left py-3 px-4 text-[10px] md:text-[12px] border-r border-[#4FC9EE]">
-                                <img src="{{ asset($cata_book->default_image) }}" alt="" class="w-12 h-10">
+                                <img src="{{ asset($cata_book->default_image) }}" alt="" class="w-12 h-10 object-contain">
                             </td>
                             <td class="text-left py-3 px-4 text-[10px] md:text-[12px] max-w-[100px] truncate border-r border-[#4FC9EE]">{{ $cata_book->name_en }}</td>
                             <td class="text-left py-3 px-4 text-[10px] md:text-[12px] max-w-[100px] truncate border-r border-[#4FC9EE]">{{ $cata_book->type_en }}</td>
