@@ -12,6 +12,7 @@
 
     <title>The Bible Society in Cambodia</title>
     <link rel="icon" href="{{ asset('assets/images/logo.svg') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/font.css') }}">
 
 
     <!-- Fonts -->

@@ -11,7 +11,7 @@ return [
 
     "welcome" => "The Bible Society in Cambodia.",
     "bible" => "Bible",
-    "everyone" => "Bible For Everyone",
+    "everyone" => "The Bible For Everyone",
     "title-1" => "Welcome to",
 
     "history_title" => "ប្រវត្តិនៃព្រះគម្ពីរបរិសុទ្ធ (១៩៥៤) ឬហៅម្យ៉ាងទៀតថា ព្រះគម្ពីរហាម៉ុង",

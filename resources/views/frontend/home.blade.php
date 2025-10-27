@@ -61,7 +61,7 @@
         <div class="relative w-full max-w-7xl mx-auto text-center z-10">
             <div class="text-[#fff] w-full" data-aos="fade-right" data-aos-duration="1000">
                 <h1
-                    class="text-[30px] md:text-[50px] xl:text-[5rem] font-[600] leading-none uppercase {{ app()->getLocale() === 'km' ? 'font-kantumruy' : 'font-caprasimo' }}">
+                    class="text-[25px] md:text-[50px] xl:text-[5rem] font-[500] leading-10 md:leading-none {{ app()->getLocale() === 'km' ? 'font-fasthand' : 'font-aesthetic' }}">
                     {{ __('messages.everyone') }}
                 </h1>
             </div>

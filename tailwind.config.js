@@ -14,7 +14,8 @@ export default {
             fontFamily: {
                 inter: ['Inter', 'sans-serif'],
                 kantumruy: ['"Kantumruy Pro"', 'sans-serif'],
-                caprasimo: ['"Caprasimo"', 'serif'],
+                fasthand: ['KhmerOSFasthand', 'sans-serif'],
+                aesthetic: ['AestheticMonoline', 'sans-serif'],
             },
         },
     },
