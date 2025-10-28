@@ -37,9 +37,9 @@
                     <tr>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Image</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Name</th>
-                        <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Code</th>
-                        <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Size</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Type</th>
+                        <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Size</th>
+                        <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Code</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Isbn</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Catalogue</th>
                         <th class="text-left py-3 px-4 text-[12px] border-r border-[#fff]">Action</th>
