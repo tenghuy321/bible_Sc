@@ -19,11 +19,15 @@ class CatalogueBookController extends Controller
             $query->where('cataloguebook.catalogueId', $request->catalogue_id);
         }
 
+        $query->orderBy('cataloguebook.catalogueId', 'asc')
+            ->orderBy('cataloguebook.createdAt', 'asc');
+
         $cata_books = $query->paginate(10);
         $catalogues = Catalogues::select('id', 'name_en')->get();
 
         return view('admin.cataloguesBook.index', compact('cata_books', 'catalogues'));
     }
+
 
 
 
@@ -71,8 +75,9 @@ class CatalogueBookController extends Controller
         $created = CatalogueBook::create($validated);
 
         if ($created) {
+            // Redirect back with catalogue filter
             return redirect()
-                ->route('catabook-backend.index')
+                ->route('catabook-backend.index', ['catalogue_id' => $validated['catalogueId']])
                 ->with('success', 'Created successfully!');
         }
 
@@ -81,6 +86,7 @@ class CatalogueBookController extends Controller
             ->with('error', 'Failed to create.')
             ->withInput();
     }
+
 
 
     public function edit(CatalogueBook $catabook)
@@ -132,7 +138,7 @@ class CatalogueBookController extends Controller
                 Storage::disk('custom')->delete($img);
             }
 
-            // Delete the folder if empty
+            // Delete folder if empty
             $folder = dirname($img);
             if (Storage::disk('custom')->exists($folder) && count(Storage::disk('custom')->files($folder)) === 0) {
                 Storage::disk('custom')->deleteDirectory($folder);
@@ -153,9 +159,13 @@ class CatalogueBookController extends Controller
 
         $catabook->update($validated);
 
-        return redirect()->route('catabook-backend.index', ['page' => $request->query('page', 1)])
-            ->with('success', 'Updated Successfully!');
+        // Redirect with catalogue filter and current page
+        return redirect()->route('catabook-backend.index', [
+            'catalogue_id' => $catabook->catalogueId,
+            'page' => $request->query('page', 1)
+        ])->with('success', 'Updated Successfully!');
     }
+
 
     public function delete(CatalogueBook $catabook)
     {

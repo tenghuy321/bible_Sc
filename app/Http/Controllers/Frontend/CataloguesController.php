@@ -12,7 +12,11 @@ class CataloguesController extends Controller
 {
     public function index()
     {
-        $data['catalogues'] = Catalogues::with('catabooks')->get();
+$data['catalogues'] = Catalogues::with(['catabooks' => function($query) {
+    $query->orderBy('createdAt', 'asc'); // or desc
+}])->get();
+
+
         $data['versions_item'] = Version::where('slug', '=', 'khmer-standard-version-khsv')->first();
 
 
