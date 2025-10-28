@@ -58,7 +58,7 @@
 
 
             </div>
-            <div class="mt-4">
+            <div class="mt-5">
                 <div class="w-full pr-4">
                     <div class="swiper MissionSwiper w-full h-full">
                         <div class="swiper-wrapper w-full h-full">
@@ -77,7 +77,7 @@
                     {!! app()->getLocale() === 'km' ? $news->middle_content_kh : $news->middle_content_en !!}
                 </div>
             </div>
-            <div class="mt-4">
+            <div class="mt-5">
                 <div class="w-full pr-4">
                     <div class="swiper MissionSwiper w-full h-full">
                         <div class="swiper-wrapper w-full h-full">
