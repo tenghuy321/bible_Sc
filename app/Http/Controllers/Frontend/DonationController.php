@@ -148,7 +148,6 @@ class DonationController extends Controller
         $tranId = time();
         $reqTime = time();
 
-
         $fields = [
             'req_time'       => $reqTime,
             'merchant_id'    => $merchantId,
@@ -159,7 +158,6 @@ class DonationController extends Controller
             'email'          => 'tenghuyly2330@gmail.com',
             'phone'          => '+85510800994',
             'payment_option' => 'abapay_khqr',
-            // 'type' => 'pre-auth',
             'currency'       => $currency,
         ];
 
@@ -172,7 +170,6 @@ class DonationController extends Controller
             . $fields['lastname']
             . $fields['email']
             . $fields['phone']
-            // . $fields['type']
             . $fields['payment_option']
             . $currency;
 

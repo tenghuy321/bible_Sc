@@ -10,13 +10,22 @@ use Illuminate\Support\Facades\Storage;
 
 class CatalogueBookController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $cata_books = CatalogueBook::join('catalogue', 'cataloguebook.catalogueId', 'catalogue.id')
-            ->select('cataloguebook.*', 'catalogue.name_en as cname')
-            ->paginate(10);
-        return view('admin.cataloguesBook.index', compact('cata_books'));
+        $query = CatalogueBook::join('catalogue', 'cataloguebook.catalogueId', '=', 'catalogue.id')
+            ->select('cataloguebook.*', 'catalogue.name_en as cname');
+
+        if ($request->filled('catalogue_id')) {
+            $query->where('cataloguebook.catalogueId', $request->catalogue_id);
+        }
+
+        $cata_books = $query->paginate(10);
+        $catalogues = Catalogues::select('id', 'name_en')->get();
+
+        return view('admin.cataloguesBook.index', compact('cata_books', 'catalogues'));
     }
+
+
 
     public function create()
     {

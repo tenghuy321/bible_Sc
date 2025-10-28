@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-    <div class="my-2 px-2 md:px-4 flex items-center justify-between">
+    {{-- <div class="my-2 px-2 md:px-4 flex items-center justify-between">
         <a href="{{ route('version-backend.create') }}"
             class="hover:!bg-[#4FC9EE] hover:!text-[#ffffff] text-[#4FC9EE] px-4 py-2 my-3 rounded-[5px] border-2 border-[#4FC9EE] text-[12px] sm:text-[14px]">
             <span class="">Add new</span>
         </a>
-    </div>
+    </div> --}}
 
     @component('admin.components.alert')
     @endcomponent

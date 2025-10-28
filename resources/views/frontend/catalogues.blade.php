@@ -127,7 +127,7 @@
                                     '{{ $images }}'
                                 )"
                                         class="flex-1 py-2 border-2 border-[#32CDF0] text-[#32CDF0] rounded-full">
-                                        {{ $locale === 'km' ? 'ព័ត៍មានបន្ថែម' : 'Details' }}
+                                        {{ $locale === 'km' ? 'ព័ត៌មានលម្អិត' : 'Details' }}
                                     </button>
                                 </div>
                             </div>
