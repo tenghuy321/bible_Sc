@@ -14,9 +14,17 @@ class News extends Model
         'title_kh',
         'content_en',
         'content_kh',
+        'middle_content_kh',
+        'middle_content_en',
+        'end_content_kh',
+        'end_content_en',
         'image',
+        'middle_image',
+        'end_image',
     ];
     protected $casts = [
-        'image' => 'array'
+        'image' => 'array',
+        'middle_image' => 'array',
+        'end_image' => 'array',
     ];
 }

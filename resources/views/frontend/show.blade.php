@@ -25,30 +25,76 @@
 
     <section id="news_items" class="max-w-7xl mx-auto py-10 px-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         @php
-            $images = json_decode($news->image, true) ?? [];
+            // $images = json_decode($news->image, true) ?? [];
+            $images = $news->image ?? [];
+            $middle_images = $news->middle_image ?? [];
+            $end_images = $news->end_image ?? [];
+
         @endphp
 
         <div
             class="w-full lg:col-span-2 relative pl-0 lg:pl-10 mt-4 md:mt-0 lg:before:content-[''] lg:before:absolute lg:before:right-0 before:top-0 lg:before:h-full lg:before:w-[2px] lg:before:bg-[#4FC9EE]">
-            <div class="w-full pr-4">
-                <div class="swiper MissionSwiper w-full h-full">
-                    <div class="swiper-wrapper w-full h-full">
-                        @foreach ($images as $img)
-                            <div class="swiper-slide w-full h-full ">
-                                <img src="{{ asset($img) }}" alt="" loading="lazy"
-                                    class="w-full h-[250px] md:h-[400px] rounded-[10px] object-cover object-bottom">
-                            </div>
-                        @endforeach
+            <div>
+                <div class="w-full pr-4">
+                    <div class="swiper MissionSwiper w-full h-full">
+                        <div class="swiper-wrapper w-full h-full">
+                            @foreach ($images as $img)
+                                <div class="swiper-slide w-full h-full ">
+                                    <img src="{{ asset($img) }}" alt="" loading="lazy"
+                                        class="w-full h-[250px] md:h-[400px] rounded-[10px] object-cover object-bottom">
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="swiper-pagination"></div>
+                </div>
+
+                <h1 class="text-[16px] md:text-[18px] font-[700] pt-4">
+                    {{ app()->getLocale() === 'km' ? $news->title_kh : $news->title_en }}
+                </h1>
+                <div class="text-[14px] prose prose-lg max-w-none mt-4 pr-0 md:pr-6">
+                    {!! app()->getLocale() === 'km' ? $news->content_kh : $news->content_en !!}
+                </div>
+
+
+            </div>
+            <div class="mt-4">
+                <div class="w-full pr-4">
+                    <div class="swiper MissionSwiper w-full h-full">
+                        <div class="swiper-wrapper w-full h-full">
+                            @foreach ($middle_images as $img)
+                                <div class="swiper-slide w-full h-full ">
+                                    <img src="{{ asset($img) }}" alt="" loading="lazy"
+                                        class="w-full h-[250px] md:h-[400px] rounded-[10px] object-cover object-bottom">
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="text-[14px] prose prose-lg max-w-none mt-4 pr-0 md:pr-6">
+                    {!! app()->getLocale() === 'km' ? $news->middle_content_kh : $news->middle_content_en !!}
                 </div>
             </div>
+            <div class="mt-4">
+                <div class="w-full pr-4">
+                    <div class="swiper MissionSwiper w-full h-full">
+                        <div class="swiper-wrapper w-full h-full">
+                            @foreach ($end_images as $img)
+                                <div class="swiper-slide w-full h-full ">
+                                    <img src="{{ asset($img) }}" alt="" loading="lazy"
+                                        class="w-full h-[250px] md:h-[400px] rounded-[10px] object-cover object-bottom">
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
 
-            <h1 class="text-[16px] md:text-[18px] font-[700] pt-4">
-                {{ app()->getLocale() === 'km' ? $news->title_kh : $news->title_en }}
-            </h1>
-            <div class="text-[14px] prose prose-lg max-w-none mt-4 pr-0 md:pr-6">
-                {!! app()->getLocale() === 'km' ? $news->content_kh : $news->content_en !!}
+                <div class="text-[14px] prose prose-lg max-w-none mt-4 pr-0 md:pr-6">
+                    {!! app()->getLocale() === 'km' ? $news->end_content_kh	 : $news->end_content_en !!}
+                </div>
             </div>
 
             <a href="{{ route('news_item') }}"
@@ -66,7 +112,8 @@
             <div class="flex flex-wrap flex-row lg:flex-col gap-4" x-data="{ showAll: false }">
                 @foreach ($newsItem as $index => $item)
                     @php
-                        $images = json_decode($item->image, true) ?? [];
+                        // $images = json_decode($item->image, true) ?? [];
+                        $images = $item->image ?? [];
                     @endphp
 
                     <div x-show="showAll || {{ $index }} < 2" x-transition

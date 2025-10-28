@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\News;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\News;
 use Illuminate\Support\Facades\Storage;
 
 class NewsBackendController extends Controller
@@ -22,32 +23,63 @@ class NewsBackendController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title_en' => 'nullable|string',
-            'title_kh' => 'nullable|string',
+            'title_en' => 'nullable|string|max:255',
+            'title_kh' => 'nullable|string|max:255',
             'content_en' => 'nullable|string',
             'content_kh' => 'nullable|string',
-            'images' => 'required|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
+            'middle_content_en' => 'nullable|string',
+            'middle_content_kh' => 'nullable|string',
+            'end_content_en' => 'nullable|string',
+            'end_content_kh' => 'nullable|string',
+
+            'image' => 'nullable|array',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:10240',
+
+            'middle_image' => 'nullable|array',
+            'middle_image.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:10240',
+
+            'end_image' => 'nullable|array',
+            'end_image.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:10240',
         ]);
 
-        $folderName = strtolower(str_replace(' ', '_', $validated['title_en']));
-        $imagePaths = [];
+        // Create a clean folder name
+        $folderName = $validated['title_en']
+            ? Str::slug($validated['title_en'])
+            : 'news_' . now()->timestamp;
 
-        foreach ($request->file('images') as $imageFile) {
-            $path = $imageFile->store("news/{$folderName}", 'custom');
-            $imagePaths[] = $path;
-        }
+        // Helper to handle image upload for each section
+        $uploadImages = function ($files, $section) use ($folderName) {
+            $paths = [];
+            if ($files) {
+                foreach ($files as $file) {
+                    $paths[] = $file->store("news/{$folderName}/{$section}", 'custom');
+                }
+            }
+            return $paths;
+        };
 
+        // Upload images for each section
+        $mainImages = $uploadImages($request->file('image'), 'main');
+        $middleImages = $uploadImages($request->file('middle_image'), 'middle');
+        $endImages = $uploadImages($request->file('end_image'), 'end');
+
+        // Store to database
         News::create([
-            'title_en' => $validated['title_en'],
-            'title_kh' => $validated['title_kh'],
-            'content_en' => $validated['content_en'],
-            'content_kh' => $validated['content_kh'],
-            'image' => json_encode($imagePaths),
+            'title_en' => $validated['title_en'] ?? null,
+            'title_kh' => $validated['title_kh'] ?? null,
+            'content_en' => $validated['content_en'] ?? null,
+            'content_kh' => $validated['content_kh'] ?? null,
+            'middle_content_en' => $validated['middle_content_en'] ?? null,
+            'middle_content_kh' => $validated['middle_content_kh'] ?? null,
+            'end_content_en' => $validated['end_content_en'] ?? null,
+            'end_content_kh' => $validated['end_content_kh'] ?? null,
+            'image' => $mainImages,
+            'middle_image' => $middleImages,
+            'end_image' => $endImages,
         ]);
 
         return redirect()->route('news_backend.index')
-            ->with('success', 'Created Successfully!');
+            ->with('success', 'News created successfully!');
     }
 
     public function edit(string $id)
@@ -58,63 +90,104 @@ class NewsBackendController extends Controller
 
     public function update(Request $request, string $id)
     {
-
         $validated = $request->validate([
-            'title_en' => 'nullable|string',
-            'title_kh' => 'nullable|string',
+            'title_en' => 'nullable|string|max:255',
+            'title_kh' => 'nullable|string|max:255',
             'content_en' => 'nullable|string',
             'content_kh' => 'nullable|string',
-            'images' => 'nullable|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
+            'middle_content_en' => 'nullable|string',
+            'middle_content_kh' => 'nullable|string',
+            'end_content_en' => 'nullable|string',
+            'end_content_kh' => 'nullable|string',
+            'image' => 'nullable|array',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:10240',
+            'middle_image' => 'nullable|array',
+            'middle_image.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:10240',
+            'end_image' => 'nullable|array',
+            'end_image.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:10240',
         ]);
 
-        $new = News::findOrFail($id);
-        $folderName = strtolower(str_replace(' ', '_', $validated["title_en"]));
+        $news = News::findOrFail($id);
+        $folderName = $validated['title_en'] ? Str::slug($validated['title_en']) : 'news_' . now()->timestamp;
 
-        $imagePaths = json_decode($new->image, true) ?? [];
+        // Helper to process image sections
+        $handleImages = function ($section, $existingImages) use ($request, $folderName) {
+            $images = is_array($existingImages) ? $existingImages : [];
 
-        if ($request->filled('removed_images')) {
-            $removedImages = json_decode($request->removed_images, true);
-
-            foreach ($removedImages as $removedImage) {
-                if (Storage::disk('custom')->exists($removedImage)) {
-                    Storage::disk('custom')->delete($removedImage);
+            // Match input: removed_image, removed_middle_image, removed_end_image
+            $removedKey = 'removed_' . $section;
+            if ($request->filled($removedKey)) {
+                $removedImages = json_decode($request->$removedKey, true);
+                foreach ($removedImages as $img) {
+                    if (Storage::disk('custom')->exists($img)) {
+                        Storage::disk('custom')->delete($img);
+                    }
+                    $images = array_filter($images, fn($i) => $i !== $img);
                 }
-                $imagePaths = array_filter($imagePaths, fn($img) => $img !== $removedImage);
             }
-        }
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $imageFile) {
-                $path = $imageFile->store("news/{$folderName}", 'custom');
-                $imagePaths[] = $path;
-            }
-        }
 
-        $new->update([
-            'title_en' => $validated['title_en'],
-            'title_kh' => $validated['title_kh'],
-            'content_en' => $validated['content_en'],
-            'content_kh' => $validated['content_kh'],
-            'image' => json_encode(array_values($imagePaths))
+            // Handle uploaded files
+            if ($request->hasFile($section)) {
+                foreach ($request->file($section) as $file) {
+                    $images[] = $file->store("news/{$folderName}/{$section}", 'custom');
+                }
+            }
+
+            return array_values($images); // reindex
+        };
+
+        $news->update([
+            'title_en' => $validated['title_en'] ?? $news->title_en,
+            'title_kh' => $validated['title_kh'] ?? $news->title_kh,
+            'content_en' => $validated['content_en'] ?? $news->content_en,
+            'content_kh' => $validated['content_kh'] ?? $news->content_kh,
+            'middle_content_en' => $validated['middle_content_en'] ?? $news->middle_content_en,
+            'middle_content_kh' => $validated['middle_content_kh'] ?? $news->middle_content_kh,
+            'end_content_en' => $validated['end_content_en'] ?? $news->end_content_en,
+            'end_content_kh' => $validated['end_content_kh'] ?? $news->end_content_kh,
+            'image' => $handleImages('image', $news->image),
+            'middle_image' => $handleImages('middle_image', $news->middle_image),
+            'end_image' => $handleImages('end_image', $news->end_image),
         ]);
 
-        return redirect()->route('news_backend.index')
-            ->with('success', 'Updated successfully!');
+        return redirect()->route('news_backend.index')->with('success', 'News updated successfully!');
     }
+
+
+
 
     public function delete(string $id)
     {
-        $new = News::findOrFail($id);
-        $imagePaths = json_decode($new->image, true) ?? [];
+        $news = News::findOrFail($id);
 
-        foreach ($imagePaths as $image) {
-            if (Storage::disk('custom')->exists($image)) {
-                Storage::disk('custom')->delete($image);
+        // Decode all image fields
+        $mainImages = $news->image ?? [];
+        $middleImages = $news->middle_image ?? [];
+        $endImages = $news->end_image ?? [];
+
+        // Combine all image paths
+        $allImages = array_merge($mainImages, $middleImages, $endImages);
+
+        // Delete all image files from storage
+        foreach ($allImages as $imagePath) {
+            if (Storage::disk('custom')->exists($imagePath)) {
+                Storage::disk('custom')->delete($imagePath);
             }
         }
-        $new->delete();
+
+        // Optionally, clean up empty folder (if you want)
+        $baseFolder = 'news/' . strtolower(str_replace(' ', '_', $news->title_en ?? ''));
+        if (Storage::disk('custom')->exists($baseFolder)) {
+            $files = Storage::disk('custom')->allFiles($baseFolder);
+            if (empty($files)) {
+                Storage::disk('custom')->deleteDirectory($baseFolder);
+            }
+        }
+
+        // Delete the database record
+        $news->delete();
 
         return redirect()->route('news_backend.index')
-            ->with('success', 'Deleted successfully!');
+            ->with('success', 'News deleted successfully!');
     }
 }

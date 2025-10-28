@@ -270,8 +270,9 @@
 
             <div data-aos="fade-up" data-aos-duration="500">
                 @php
-                    $news_images = json_decode($latestNews->image, true) ?? [];
+                    $news_images = $latestNews->image ?? [];
                 @endphp
+
                 <div class="relative w-full h-[300px] group overflow-hidden">
                     <div class="absolute left-0 top-4 bg-[#4FC9EE] px-4 py-1 z-10">
                         <h1 class="text-gradient text-[16px] md:text-[20px] font-[600] max-w-[250px] md:max-w-full">

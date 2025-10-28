@@ -30,15 +30,13 @@
                             <tr class="border-t border-[#4FC9EE]">
                                 <td class="text-left py-3 px-4 text-[10px] md:text-[12px] border-r border-[#4FC9EE]">
                                     <div class="flex items-center h-full w-full">
-                                        @php
-                                            $images = json_decode($new->image, true); // decode to array
-                                        @endphp
-                                        @if (!empty($images) && isset($images[0]))
-                                            <img src="{{ asset($images[0]) }}" alt=""
+                                        @if (!empty($new->image) && isset($new->image[0]))
+                                            <img src="{{ asset($new->image[0]) }}" alt=""
                                                 class="w-20 h-12 object-contain object-center">
                                         @endif
                                     </div>
                                 </td>
+
                                 <td class="py-3 px-4 text-xs max-w-[200px] border-r border-[#4FC9EE]">
                                     <div class="flex flex-col truncate">
                                         <p>{{ $new->title_en ?? '' }}</p>

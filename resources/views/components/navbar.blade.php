@@ -189,7 +189,7 @@
         </div>
 
         <div class="pl-6" data-aos="fade-left" data-aos-duration="1000">
-            <a href="{{ url(app()->getLocale() . '/' . $versions_item->slug) }}"
+            <a href="{{ url(app()->getLocale() . '/' . $versions_item->slug) }}" target="_blank"
                 class="w-fit bg-[#50bbed] text-[12px] xl:text-[24px] text-black rounded-full px-[15px] py-[2px] xl:px-[24px] mt-2">
                 {{ app()->getLocale() === 'km' ? 'ព្រះគម្ពីរ' : 'Bible' }}
             </a>
